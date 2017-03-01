@@ -17,7 +17,7 @@ public class Seat {
 	}
 	
 	public boolean isBuisness(){
-		return SEAT_NUMBER;
+		return BUISNESS_CLASS;
 	}
 	
 	public boolean isBooked(){
