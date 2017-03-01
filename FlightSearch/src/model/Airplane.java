@@ -11,6 +11,13 @@ public class Airplane {
 		this.numOfBusinessClass=numOfBusinessClass;
 	}
 	
+	public int getNumOfSeats(){
+		return numOfSeats;
+	}
+	
+	public int getNumOfBusinessClass(){
+		return numOfBusinessClass;
+	}
 	
 
 }
