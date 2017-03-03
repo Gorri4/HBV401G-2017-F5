@@ -1,9 +1,25 @@
-package model;
-//bla
-public class Airline {
 
-	public Airline() {
-		
+
+package model;
+
+import java.util.List;
+
+public class Airline {
+	
+	private String name;
+	private double rating;
+	private boolean includedBag;
+	private boolean includedMeal;
+	private List<Flight> flights;
+	private List<Airplane> airplanes;
+	
+	public Airline(String name, double rating, boolean includedBag, boolean includedMeal, List<Flight> flights, List<Airplane> airplanes) {
+		this.name=name;
+		this.rating=rating;
+		this.includedBag=includedBag;
+		this.includedMeal=includedMeal;
+		this.flights=flights;
+		this.airplanes=airplanes;		
 	}
 
 }
