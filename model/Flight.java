@@ -1,6 +1,6 @@
 package model;
 
-import
+import java.util.Date;
 
 public class Flight {
 	
@@ -46,6 +46,7 @@ public class Flight {
 	
 	public Date getLocalTime(City city, Date time){
 		//skila einhvernveginn time+city.getTimeZone()
+		return time;
 	}
 
 }
