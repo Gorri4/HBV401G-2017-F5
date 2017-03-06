@@ -21,5 +21,21 @@ public class Airline {
 		this.flights=flights;
 		this.airplanes=airplanes;		
 	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public double getRating(){
+		return rating;
+	}
+	
+	public boolean isBagIncluded(){
+		return includedBag;
+	}
+	
+	public boolean isMealIncluded(){
+		return includedMeal;
+	}
 
 }
