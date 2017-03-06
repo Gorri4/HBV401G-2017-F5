@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Flight {
 	
+	private int flightNum;
 	private Date departureTime;
 	private Date arrivalTime;
 	private City departureCity;
@@ -11,7 +12,8 @@ public class Flight {
 	private double flightTime;
 	private double price;
 
-	public Flight(Date departureTime, Date arrivalTime, City departureCity, City arrivalCity, double flightTime, double price) {
+	public Flight(int flightNum, Date departureTime, Date arrivalTime, City departureCity, City arrivalCity, double flightTime, double price) {
+		this.flightNum=flightNum;
 		this.departureTime=departureTime;
 		this.arrivalTime=arrivalTime;
 		this.departureCity=departureCity;
@@ -20,6 +22,9 @@ public class Flight {
 		this.price=price;
 	}
 	
+	public int getFlightNum(){
+		return flightNum;
+	}
 	public Date getDepTime(){
 		return departureTime;
 	}
