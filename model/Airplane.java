@@ -1,14 +1,18 @@
 package model;
 
+import java.util.List;
+
 public class Airplane {
 	
 	private int numOfSeats;
 	private int numOfBusinessClass;
+	private List<Seat> seats;
 	
 
-	public Airplane(int numOfSeats, int numOfBusinessClass) {
+	public Airplane(int numOfSeats, int numOfBusinessClass, List<Seat> seats) {
 		this.numOfSeats=numOfSeats;
 		this.numOfBusinessClass=numOfBusinessClass;
+		this.seats = seats;
 	}
 	
 	public int getNumOfSeats(){
@@ -18,6 +22,4 @@ public class Airplane {
 	public int getNumOfBusinessClass(){
 		return numOfBusinessClass;
 	}
-	
-
 }
