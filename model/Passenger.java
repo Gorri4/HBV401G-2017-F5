@@ -2,20 +2,20 @@ package model;
 
 public class Passenger {
 
-	private String NAME;
-	private String KENNITALA;
+	private String name;
+	private String kennitala;
 	
-	public Passenger(String NAME, String KENNITALA) {
-		this.NAME = NAME;
-		this.KENNITALA = KENNITALA;
+	public Passenger(String name, String kennitala) {
+		this.name = name;
+		this.kennitala = kennitala;
 	}
 	
 	public String getName(){
-		return NAME;
+		return name;
 	}
 	
 	public String getKennitala(){
-		return KENNITALA;
+		return kennitala;
 	}
 
 }
