@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class Flight {
+public class Flight implements Comparable{
 	
 	private int flightNum;
 	private Date departureTime;
@@ -11,8 +11,9 @@ public class Flight {
 	private City arrivalCity;
 	private double flightTime;
 	private double price;
+	private Airplane airplane;
 
-	public Flight(int flightNum, Date departureTime, Date arrivalTime, City departureCity, City arrivalCity, double flightTime, double price) {
+	public Flight(int flightNum, Date departureTime, Date arrivalTime, City departureCity, City arrivalCity, double flightTime, double price, Airplane airplane) {
 		this.flightNum=flightNum;
 		this.departureTime=departureTime;
 		this.arrivalTime=arrivalTime;
@@ -20,6 +21,7 @@ public class Flight {
 		this.arrivalCity=arrivalCity;
 		this.flightTime=flightTime;
 		this.price=price;
+		this.airplane = airplane;
 	}
 	
 	public int getFlightNum(){
