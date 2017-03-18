@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class Flight implements Comparable{
+public class Flight implements Comparable<Flight>{
 	
 	private int flightNum;
 	private Date departureTime;
@@ -56,4 +56,14 @@ public class Flight implements Comparable{
 		return time;
 	}
 
+	// x.compareTo(y) returns 1 if x is more expensive than y, 
+	// -1 if x is cheaper than y but 0 if they are equally expensive
+	@Override
+	public int compareTo(Flight y) {
+		if(this.price > y.price) return 1;
+		else if(this.price < y.price) return -1;
+		else return 0;
+	}
+
+	
 }
