@@ -60,10 +60,8 @@ public class Flight implements Comparable<Flight>{
 	// -1 if x is cheaper than y but 0 if they are equally expensive
 	@Override
 	public int compareTo(Flight y) {
-		if(this.price > y.price) return 1;
-		else if(this.price < y.price) return -1;
-		else return 0;
-	}
+		return this.price - y.price;
+    }
 
 	
 }
