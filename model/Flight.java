@@ -12,8 +12,9 @@ public class Flight implements Comparable<Flight>{
 	private double flightTime;
 	private double price;
 	private Airplane airplane;
+	private Airline airline;
 
-	public Flight(int flightNum, Date departureTime, Date arrivalTime, City departureCity, City arrivalCity, double flightTime, double price, Airplane airplane) {
+	public Flight(int flightNum, Date departureTime, Date arrivalTime, City departureCity, City arrivalCity, double flightTime, double price, Airplane airplane, Airline airline) {
 		this.flightNum=flightNum;
 		this.departureTime=departureTime;
 		this.arrivalTime=arrivalTime;
@@ -22,6 +23,7 @@ public class Flight implements Comparable<Flight>{
 		this.flightTime=flightTime;
 		this.price=price;
 		this.airplane = airplane;
+		this.Airline = airline;
 	}
 	
 	public int getFlightNum(){
@@ -51,6 +53,14 @@ public class Flight implements Comparable<Flight>{
 		return price;
 	}
 	
+	public Airline getAirline(){
+		return Airline;
+	}
+	
+	public Airplane getAirplane(){
+		return Airplane;
+	}
+	
 	public Date getLocalTime(City city, Date time){
 		//skila einhvernveginn time+city.getTimeZone()
 		return time;
@@ -60,7 +70,7 @@ public class Flight implements Comparable<Flight>{
 	// -1 if x is cheaper than y but 0 if they are equally expensive
 	@Override
 	public int compareTo(Flight y) {
-		return this.price - y.price;
+		return (int) this.price - y.price;
     }
 
 	
