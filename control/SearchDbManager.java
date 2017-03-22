@@ -2,10 +2,16 @@ package control;
 
 import java.sql.*;
 
+import model.City;
+
 public class SearchDbManager {
 
 	public SearchDbManager() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public ResultSet createQuery(int flightNum, Date date, City arrCity, City depCity, double price){
+		return null;
 	}
 	
 	/*public ResultSet createQuery(Date d, City c){
