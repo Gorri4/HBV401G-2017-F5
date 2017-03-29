@@ -17,6 +17,19 @@ public class SearchContainer {
 		this.SDBMinterface = SDBMinterface;
 	}
 	
+	public ArrayList<Flight> reverseSort(String s){
+		if (s == "date"){
+			Collections.sort(this.flightList, new DateComparator());
+			Collections.reverse(flightList);
+			return flightList;
+		}
+		else {
+			Collections.sort(flightList);
+			Collections.reverse(flightList);
+			return flightList;
+		}
+		
+	}
 	
 	public ArrayList<Flight> filter(String[] flugfelog){
 		ArrayList<Flight> filteredFlightList = new ArrayList<Flight>();
