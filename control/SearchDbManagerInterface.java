@@ -8,4 +8,4 @@ public interface SearchDbManagerInterface {
 	
 	public ArrayList<Flight> createQuery(int flightNum, Date date, City arrCity, City depCity, double price);
 
-}
+	}

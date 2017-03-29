@@ -10,7 +10,7 @@ import model.*;
 
 public class MockSearchDbContainer implements SearchDbManagerInterface{
 
-	public MockSearchDbManager() {
+	public MockSearchDbContainer() {
 		
 	}
 	

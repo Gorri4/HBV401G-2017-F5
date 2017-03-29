@@ -2,11 +2,12 @@ package control;
 
 import model.*;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookingDbManager {
 	
-	private List<Seat,Passenger> bookings; // búa til hlut sem er booking
+	//private ArrayList<Seat,Passenger> bookings; // bï¿½a til hlut sem er booking
 
 	public BookingDbManager() {
 		// TODO Auto-generated constructor stub
