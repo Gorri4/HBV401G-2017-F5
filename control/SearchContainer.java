@@ -10,10 +10,11 @@ import model.*;
 public class SearchContainer {
 	
 	private ArrayList<Flight> flightList;
+	private SearchDbManagerInterface SDBMinterface;
 	
 
-	public SearchContainer() {
-		//return SearchContainer;
+	public SearchContainer(SearchDbManagerInterface SDBMinterface) {
+		this.SDBMinterface = SDBMinterface;
 	}
 	
 	
@@ -41,17 +42,16 @@ public class SearchContainer {
 			return flightList;
 		}
 		else {
-			Collections.sort(this.flightList);
+			Collections.sort(flightList);
 			return flightList;
 		}
 		
 	}
 	
 	public ArrayList<Flight> search(int flightNum, Date date, City arrCity, City depCity, double price){
-		SearchDbManager sdbm = new SearchDbManager();
-		ArrayList<Flight> flightlist = sdbm.createQuery(flightNum, date, arrCity,depCity, price);
-		return flightList;
-		
+		ArrayList<Flight> newFlightList = SDBMinterface.createQuery(flightNum, date, arrCity,depCity, price);
+		this.flightList = newFlightList;
+		return newFlightList;
 	}
 
 }

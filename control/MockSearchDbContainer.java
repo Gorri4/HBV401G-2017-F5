@@ -31,7 +31,6 @@ public class MockSearchDbContainer implements SearchDbManagerInterface{
 		flightList.add(flug3);
 		flightList.add(flug4);
 		flightList.add(flug5);
-		
 		return flightList;
 	}
 	
