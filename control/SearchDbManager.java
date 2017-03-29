@@ -1,8 +1,9 @@
 package control;
 
 import java.sql.*;
+import java.util.ArrayList;
 
-import model.City;
+import model.*;
 
 public class SearchDbManager {
 
@@ -10,9 +11,13 @@ public class SearchDbManager {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ResultSet createQuery(int flightNum, Date date, City arrCity, City depCity, double price){
+	public ArrayList<Flight> createQuery(int flightNum, Date date, City arrCity, City depCity, double price){
 		return null;
 	}
+	
+	/*public ResultSet execute(){
+		
+	}*/
 	
 	/*public ResultSet createQuery(Date d, City c){
 		return null;
