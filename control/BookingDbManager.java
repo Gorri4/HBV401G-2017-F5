@@ -6,7 +6,7 @@ import java.util.List;
 
 public class BookingDbManager {
 	
-	private List<Seat,Passenger> bookings;
+	private List<Seat,Passenger> bookings; // búa til hlut sem er booking
 
 	public BookingDbManager() {
 		// TODO Auto-generated constructor stub
