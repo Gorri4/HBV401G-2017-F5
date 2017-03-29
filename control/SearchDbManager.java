@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import model.*;
 
-public class SearchDbManager {
+public class SearchDbManager implements SearchDbManagerInterface {
 
 	public SearchDbManager() {
 		// TODO Auto-generated constructor stub

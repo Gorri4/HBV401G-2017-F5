@@ -17,7 +17,8 @@ public class SearchContainer {
 	
 	public ArrayList<Flight> search(int flightNum, Date date, City arrCity, City depCity, double price){
 		SearchDbManager sdbm = new SearchDbManager();
-		ResultSet gogn = sdbm.createQuery(flightNum, date, arrCity,depCity, price);
+		ArrayList<Flight> flightlist = sdbm.createQuery(flightNum, date, arrCity,depCity, price);
+		/*
 		try{
 			while(gogn.next()){
 				City dCity = new City(gogn.getString("departureCity"), 0);
@@ -39,6 +40,7 @@ public class SearchContainer {
 		catch(Exception e){
 			
 		}
+		*/
 		return flightList;
 		
 	}
