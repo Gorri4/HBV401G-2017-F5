@@ -3,6 +3,7 @@ package control;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import model.*;
 
@@ -13,6 +14,24 @@ public class SearchContainer {
 
 	public SearchContainer() {
 		//return SearchContainer;
+	}
+	
+	/*
+	public ArrayList<Flight> filter(String s){
+		
+	}
+	*/
+	
+	public ArrayList<Flight> sort(String s){
+		if (s == "date"){
+			Collections.sort(this.flightList, new DateComparator());
+			return flightList;
+		}
+		else {
+			Collections.sort(this.flightList);
+			return flightList;
+		}
+		
 	}
 	
 	public ArrayList<Flight> search(int flightNum, Date date, City arrCity, City depCity, double price){
