@@ -16,11 +16,22 @@ public class SearchContainer {
 		//return SearchContainer;
 	}
 	
-	/*
-	public ArrayList<Flight> filter(String s){
-		
+	
+	public ArrayList<Flight> filter(String[] flugfelog){
+		ArrayList<Flight> filteredFlightList = new ArrayList<Flight>();
+		if (flugfelog.length != 0){
+			for(String flugfelag : flugfelog){
+				for(Flight flug : flightList){
+					if (flug.getAirline().getName() == flugfelag){
+						filteredFlightList.add(flug);
+					}
+				}
+			}
+			return filteredFlightList;
+		}
+		return flightList;
 	}
-	*/
+	
 	
 	public ArrayList<Flight> sort(String s){
 		if (s == "date"){
