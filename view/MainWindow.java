@@ -92,7 +92,7 @@ public class MainWindow extends JFrame {
 		System.out.println(s);
 		City c = new City(s,0);
 		ArrayList<Flight> alist = sc.search(0, null, c, null, 0);
-		
+		//sc.sort("date");
 		for(Flight f : alist)
 		{
 			System.out.print(f.getFlightNum());
@@ -101,18 +101,9 @@ public class MainWindow extends JFrame {
 			System.out.print(f.getArrCity().getName());
 			System.out.println();
 		}
-		ArrayList<Flight> blist = sc.sort("date");
-		for(Flight f : blist)
-		{
-			System.out.print(f.getFlightNum());
-			System.out.print(f.getAirline().getName());
-			System.out.print(f.getDepCity().getName());
-			System.out.print(f.getArrCity().getName());
-			System.out.println();
-		}
 		
+		//panel_1.removeAll();
 		panel_1.updateList(alist);
-		
 	}
 
 }

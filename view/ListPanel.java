@@ -8,6 +8,10 @@ import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
+import java.awt.Dimension;
+import java.awt.Component;
+import javax.swing.BoxLayout;
 
 public class ListPanel extends JPanel {
 
@@ -18,20 +22,21 @@ public class ListPanel extends JPanel {
 	 */
 	public ListPanel(DefaultListModel<Flight> model) {
 		this.model = model;
+		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		add(scrollPane);
 		JList<Flight> list = new JList<Flight>(model);
-		add(list);
+		scrollPane.setViewportView(list);
 
 	}
 	
 	public void updateList(ArrayList<Flight> a){
+		model.removeAllElements();
 		arrlist = a;
-		
 		for(Flight f : a){
 			model.addElement(f);
-			System.out.println("r");
 		}  
-		System.out.println(model.get(0).getAirline().getName());
-		System.out.println(model.get(1).getAirline().getName());
 	}
 
 }
