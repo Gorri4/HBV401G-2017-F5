@@ -93,7 +93,9 @@ public class MainWindow extends JFrame {
 		City c = new City(s,0);
 		ArrayList<Flight> alist = sc.search(0, null, c, null, 0);
 		//sc.sort("date");
-		 alist=sc.sort("lala");
+		 //alist=sc.sort("lala");
+		String[] g = {"WOW", "World"};
+		alist = sc.filter(g);
 		for(Flight f : alist)
 		{
 			System.out.print(f.getFlightNum());
