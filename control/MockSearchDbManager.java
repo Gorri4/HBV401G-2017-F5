@@ -17,8 +17,9 @@ public class MockSearchDbManager implements SearchDbManagerInterface{
 	public ArrayList<Flight> createQuery(int flightNum, Date date, City arrCity, City depCity, double price){
 		City borg1 = new City("Berlin", 0);
 		City borg2 = new City("Paris", 0);
-		Date dags1 = new Date(1497803417);
-		Date dags2 = new Date(1497803420);
+		Date dags1 = new Date(1497803417000L);
+		Date dags2 = new Date(1497903450000L);
+		System.out.println(dags1);
 		Airplane flugvel1 = new	Airplane(1, 1, null, 1);
 		Airline flugfelag1 = new Airline("WOW", 1, true, false, null, null);
 		Airline flugfelag2 = new Airline("IcelandAir", 1, true, false, null, null);

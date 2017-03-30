@@ -93,6 +93,7 @@ public class MainWindow extends JFrame {
 		City c = new City(s,0);
 		ArrayList<Flight> alist = sc.search(0, null, c, null, 0);
 		//sc.sort("date");
+		 alist=sc.sort("lala");
 		for(Flight f : alist)
 		{
 			System.out.print(f.getFlightNum());
@@ -102,7 +103,6 @@ public class MainWindow extends JFrame {
 			System.out.println();
 		}
 		
-		//panel_1.removeAll();
 		panel_1.updateList(alist);
 	}
 
