@@ -20,10 +20,10 @@ public class SearchContainerTest {
 	
 	@Before 
 	public void setUp() {
-		this.Mock = new MockSearchDbContainer();
+		this.Mock = new MockSearchDbManager();
 		this.container = new SearchContainer(Mock);
-		this.borg1 = new City("Vopnafjörður", 0);
-		this.borg2 = new City("Borgarfjörður", 0);
+		this.borg1 = new City("Berlin", 0);
+		this.borg2 = new City("Paris", 0);
 		this.dags1 = new Date(1497803417);
 		this.container.search(1,dags1,borg1,borg2,1);
 	}
@@ -45,6 +45,11 @@ public class SearchContainerTest {
 	@Test
 	public void SortTest2() {
 		container.sort("date");
+	}
+	
+	@Test
+	public void SortTest3() {
+		container.sort("");
 	}
 	
 	@Test
