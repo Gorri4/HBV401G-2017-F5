@@ -10,12 +10,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
+
 import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.JList;
 
 public class MainWindow extends JFrame {
 
@@ -23,6 +27,9 @@ public class MainWindow extends JFrame {
 	private JTextField textField;
 	private SearchDbManagerInterface Mock = new MockSearchDbManager();
 	private SearchContainer sc = new SearchContainer(Mock);
+	//private ListPanel lp = new ListPanel();
+	private ListPanel panel_1;
+	private DefaultListModel<Flight> model = new DefaultListModel<Flight>();
 
 	/**
 	 * Launch the application.
@@ -60,6 +67,9 @@ public class MainWindow extends JFrame {
 				clickSearch();
 			}
 		});
+		
+		JLabel lblSearchCities = new JLabel("Search cities:");
+		panel.add(lblSearchCities);
 		panel.add(textField);
 		textField.setColumns(10);
 		
@@ -71,7 +81,7 @@ public class MainWindow extends JFrame {
 		});
 		panel.add(btnClickSearch);
 		
-		JPanel panel_1 = new JPanel();
+		panel_1 = new ListPanel(model);
 		contentPane.add(panel_1, BorderLayout.CENTER);
 	}
 	
@@ -82,6 +92,7 @@ public class MainWindow extends JFrame {
 		System.out.println(s);
 		City c = new City(s,0);
 		ArrayList<Flight> alist = sc.search(0, null, c, null, 0);
+		
 		for(Flight f : alist)
 		{
 			System.out.print(f.getFlightNum());
@@ -90,6 +101,17 @@ public class MainWindow extends JFrame {
 			System.out.print(f.getArrCity().getName());
 			System.out.println();
 		}
+		ArrayList<Flight> blist = sc.sort("date");
+		for(Flight f : blist)
+		{
+			System.out.print(f.getFlightNum());
+			System.out.print(f.getAirline().getName());
+			System.out.print(f.getDepCity().getName());
+			System.out.print(f.getArrCity().getName());
+			System.out.println();
+		}
+		
+		panel_1.updateList(alist);
 		
 	}
 

@@ -18,6 +18,7 @@ public class MockSearchDbManager implements SearchDbManagerInterface{
 		City borg1 = new City("Berlin", 0);
 		City borg2 = new City("Paris", 0);
 		Date dags1 = new Date(1497803417);
+		Date dags2 = new Date(1497803420);
 		Airplane flugvel1 = new	Airplane(1, 1, null, 1);
 		Airline flugfelag1 = new Airline("WOW", 1, true, false, null, null);
 		Airline flugfelag2 = new Airline("IcelandAir", 1, true, false, null, null);
@@ -25,7 +26,7 @@ public class MockSearchDbManager implements SearchDbManagerInterface{
 		ArrayList<Flight> flightList = new ArrayList<Flight>();
 		Flight flug1 = new Flight(1, dags1, dags1, borg1, borg2, 2, 1000, flugvel1, flugfelag1); 
 		Flight flug2 = new Flight(2, dags1, dags1, borg1, borg2, 2, 1200, flugvel1, flugfelag2); 
-		Flight flug3 = new Flight(3, dags1, dags1, borg1, borg2, 2, 1200, flugvel1, flugfelag1); 
+		Flight flug3 = new Flight(3, dags2, dags2, borg1, borg2, 2, 1200, flugvel1, flugfelag1); 
 		Flight flug4 = new Flight(4, dags1, dags1, borg1, borg2, 2, 1000, flugvel1, flugfelag3); 
 		Flight flug5 = new Flight(5, dags1, dags1, borg1, borg2, 2, 1500, flugvel1, flugfelag1); 
 		flightList.add(flug1);
