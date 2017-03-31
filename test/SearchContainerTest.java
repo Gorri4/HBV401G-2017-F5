@@ -89,4 +89,18 @@ public class SearchContainerTest {
 		}
 	}
 	
+	@Test
+	public void FilterTest2Airline() {
+		String[] flugfelog = {"EgErEkkiFlugfelag"};
+		ArrayList<Flight> filteredList = container.filter(flugfelog);
+		assertTrue(filteredList.isEmpty());
+	}
+	
+	@Test
+	public void FilterTest3Airline() {
+		String[] flugfelog = {};
+		ArrayList<Flight> filteredList = container.filter(flugfelog);
+		assertTrue(filteredList.isEmpty());
+	}
+	
 }
