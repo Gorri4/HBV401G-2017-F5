@@ -54,7 +54,7 @@ public class SearchContainerTest {
 	
 	@Test
 	public void SortTest2() {
-		ArrayList<Flight> reversePriceSortedList = container.sort("lala", true);
+		ArrayList<Flight> reversePriceSortedList = container.sort("", true);
 		assertNotNull(reversePriceSortedList);
 		double currPrice = 10000000;
 		double prevPrice = 10000000;
