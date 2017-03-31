@@ -69,6 +69,14 @@ public class SearchContainerTest {
 	
 	@Test
 	public void SortTest3() {
+		ArrayList<Flight> tomurListi = new ArrayList<Flight>();
+		ArrayList<Flight> emptySortedList = container.sort(tomurListi, "date", false);
+		assertNotNull(emptySortedList);
+		assertTrue(emptySortedList.isEmpty());
+	}
+	
+	@Test
+	public void SortTest4() {
 		ArrayList<Flight> fyrstiListi = container.getList();
 		ArrayList<Flight> DateSortedList = container.sort(fyrstiListi, "date", false);
 		assertNotNull(DateSortedList);
@@ -83,6 +91,7 @@ public class SearchContainerTest {
 	
 	@Test
 	public void FilterTest1Airline() {
+		ArrayList<Flight> fyrstiListi = container.getList();
 		String[] flugfelog = {"WOW","Emirates"};
 		ArrayList<Flight> filteredList = container.filter(flugfelog);
 		String airline;
@@ -90,6 +99,7 @@ public class SearchContainerTest {
 			airline = flug.getAirline().getName();
 			assertTrue(Arrays.asList(flugfelog).contains(airline));
 		}
+		assertTrue(filteredList.size() <= fyrstiListi.size());
 	}
 	
 	@Test
@@ -101,6 +111,19 @@ public class SearchContainerTest {
 	
 	@Test
 	public void FilterTest3Airline() {
+		ArrayList<Flight> fyrstiListi = container.getList();
+		String[] flugfelog = {"WOW","EgErEkkiFlugfelag"};
+		ArrayList<Flight> filteredList = container.filter(flugfelog);
+		String airline;
+		for (Flight flug : filteredList) {
+			airline = flug.getAirline().getName();
+			assertTrue(Arrays.asList(flugfelog).contains(airline));
+		}
+		assertTrue(filteredList.size() <= fyrstiListi.size());
+	}
+	
+	@Test
+	public void FilterTest4Airline() {
 		String[] flugfelog = {};
 		ArrayList<Flight> fyrstiListi = container.getList();
 		ArrayList<Flight> filteredList = container.filter(flugfelog);
