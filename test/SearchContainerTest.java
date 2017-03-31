@@ -41,6 +41,19 @@ public class SearchContainerTest {
 	
 	@Test
 	public void SortTest1() {
+		ArrayList<Flight> priceSortedList = container.sort("lala", false);
+		assertNotNull(priceSortedList);
+		double currPrice = 0;
+		double prevPrice = 0;
+		for (Flight flug : priceSortedList) {
+			currPrice = flug.getPrice();
+			assertTrue(currPrice >= prevPrice);
+			prevPrice = currPrice;
+		}
+	}
+	
+	@Test
+	public void SortTest2() {
 		ArrayList<Flight> reversePriceSortedList = container.sort("lala", true);
 		assertNotNull(reversePriceSortedList);
 		double currPrice = 10000000;
@@ -49,19 +62,6 @@ public class SearchContainerTest {
 			currPrice = flug.getPrice();
 			assertTrue(currPrice <= prevPrice);
 			prevPrice = currPrice;
-		}
-	}
-	
-	@Test
-	public void SortTest2() {
-		ArrayList<Flight> reverseDateSortedList = container.sort("date", true);
-		assertNotNull(reverseDateSortedList);
-		Date currDate = new Date(1597903460000L);
-		Date prevDate = new Date(1597903460000L);
-		for (Flight flug : reverseDateSortedList) {
-			currDate = flug.getDepTime();
-			assertTrue(currDate.compareTo(prevDate) <=0 ) ;
-			prevDate = currDate;
 		}
 	}
 	
@@ -75,19 +75,6 @@ public class SearchContainerTest {
 			currDate = flug.getDepTime();
 			assertTrue(currDate.compareTo(prevDate) >=0 ) ;
 			prevDate = currDate;
-		}
-	}
-	
-	@Test
-	public void SortTest4() {
-		ArrayList<Flight> priceSortedList = container.sort("lala", false);
-		assertNotNull(priceSortedList);
-		double currPrice = 0;
-		double prevPrice = 0;
-		for (Flight flug : priceSortedList) {
-			currPrice = flug.getPrice();
-			assertTrue(currPrice >= prevPrice);
-			prevPrice = currPrice;
 		}
 	}
 	
