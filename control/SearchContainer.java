@@ -10,6 +10,7 @@ import model.*;
 public class SearchContainer {
 	
 	private ArrayList<Flight> flightList;
+	private ArrayList<Flight> filtFlightList;
 	private SearchDbManagerInterface SDBMinterface;
 	
 
@@ -41,6 +42,7 @@ public class SearchContainer {
 					}
 				}
 			}
+			this.filtFlightList = filteredFlightList;
 			return filteredFlightList;
 		}
 		else{
@@ -62,9 +64,23 @@ public class SearchContainer {
 		else{
 			Collections.reverse(flightList);
 			return flightList;
+		}	
+	}
+	
+	public ArrayList<Flight> filteredSort(String s, Boolean r){
+		if (s == "date"){
+			Collections.sort(this.filtFlightList, new DateComparator());
 		}
-			
-			
+		else {
+			Collections.sort(filtFlightList);
+		}
+		if (r == false){
+			return filtFlightList;
+		}
+		else{
+			Collections.reverse(filtFlightList);
+			return filtFlightList;
+		}	
 	}
 	
 	public ArrayList<Flight> search(int flightNum, Date date, City arrCity, City depCity, double price){
