@@ -10,26 +10,11 @@ import model.*;
 public class SearchContainer {
 	
 	private ArrayList<Flight> flightList;
-	private ArrayList<Flight> filtFlightList;
 	private SearchDbManagerInterface SDBMinterface;
 	
 
 	public SearchContainer(SearchDbManagerInterface SDBMinterface) {
 		this.SDBMinterface = SDBMinterface;
-	}
-	
-	public ArrayList<Flight> reverseSort(String s){
-		if (s == "date"){
-			Collections.sort(this.flightList, new DateComparator());
-			Collections.reverse(flightList);
-			return flightList;
-		}
-		else {
-			Collections.sort(flightList);
-			Collections.reverse(flightList);
-			return flightList;
-		}
-		
 	}
 	
 	public ArrayList<Flight> filter(String[] flugfelog){
@@ -42,7 +27,6 @@ public class SearchContainer {
 					}
 				}
 			}
-			this.filtFlightList = filteredFlightList;
 			return filteredFlightList;
 		}
 		else{
@@ -50,36 +34,19 @@ public class SearchContainer {
 		}
 	}
 	
-	
-	public ArrayList<Flight> sort(String s, Boolean r){
+	public ArrayList<Flight> sort(ArrayList<Flight> fluglisti, String s, Boolean r){
 		if (s == "date"){
-			Collections.sort(this.flightList, new DateComparator());
+			Collections.sort(fluglisti, new DateComparator());
 		}
 		else {
-			Collections.sort(flightList);
+			Collections.sort(fluglisti);
 		}
 		if (r == false){
-			return flightList;
+			return fluglisti;
 		}
 		else{
-			Collections.reverse(flightList);
-			return flightList;
-		}	
-	}
-	
-	public ArrayList<Flight> filteredSort(String s, Boolean r){
-		if (s == "date"){
-			Collections.sort(this.filtFlightList, new DateComparator());
-		}
-		else {
-			Collections.sort(filtFlightList);
-		}
-		if (r == false){
-			return filtFlightList;
-		}
-		else{
-			Collections.reverse(filtFlightList);
-			return filtFlightList;
+			Collections.reverse(fluglisti);
+			return fluglisti;
 		}	
 	}
 	
@@ -87,6 +54,10 @@ public class SearchContainer {
 		ArrayList<Flight> newFlightList = SDBMinterface.createQuery(flightNum, date, arrCity,depCity, price);
 		this.flightList = newFlightList;
 		return newFlightList;
+	}
+	
+	public ArrayList<Flight> getList(){
+		return flightList;
 	}
 
 }

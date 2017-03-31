@@ -41,7 +41,8 @@ public class SearchContainerTest {
 	
 	@Test
 	public void SortTest1() {
-		ArrayList<Flight> priceSortedList = container.sort("lala", false);
+		ArrayList<Flight> fyrstiListi = container.getList();
+		ArrayList<Flight> priceSortedList = container.sort(fyrstiListi, "lala", false);
 		assertNotNull(priceSortedList);
 		double currPrice = 0;
 		double prevPrice = 0;
@@ -54,7 +55,8 @@ public class SearchContainerTest {
 	
 	@Test
 	public void SortTest2() {
-		ArrayList<Flight> reversePriceSortedList = container.sort("", true);
+		ArrayList<Flight> fyrstiListi = container.getList();
+		ArrayList<Flight> reversePriceSortedList = container.sort(fyrstiListi, "", true);
 		assertNotNull(reversePriceSortedList);
 		double currPrice = 10000000;
 		double prevPrice = 10000000;
@@ -67,7 +69,8 @@ public class SearchContainerTest {
 	
 	@Test
 	public void SortTest3() {
-		ArrayList<Flight> DateSortedList = container.sort("date", false);
+		ArrayList<Flight> fyrstiListi = container.getList();
+		ArrayList<Flight> DateSortedList = container.sort(fyrstiListi, "date", false);
 		assertNotNull(DateSortedList);
 		Date currDate = new Date(0);
 		Date prevDate = new Date(0);
@@ -99,9 +102,9 @@ public class SearchContainerTest {
 	@Test
 	public void FilterTest3Airline() {
 		String[] flugfelog = {};
+		ArrayList<Flight> fyrstiListi = container.getList();
 		ArrayList<Flight> filteredList = container.filter(flugfelog);
-		ArrayList<Flight> sortedList = container.sort("", false);
-		assertTrue(filteredList.size() == sortedList.size());
+		assertTrue(filteredList.size() == fyrstiListi.size());
 	}
 	
 }
