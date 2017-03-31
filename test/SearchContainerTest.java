@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 
 import org.junit.*;
 
@@ -39,23 +41,65 @@ public class SearchContainerTest {
 	
 	@Test
 	public void SortTest1() {
-		container.sort("lala");
+		ArrayList<Flight> reversePriceSortedList = container.sort("lala", true);
+		assertNotNull(reversePriceSortedList);
+		double currPrice = 10000000;
+		double prevPrice = 10000000;
+		for (Flight flug : reversePriceSortedList) {
+			currPrice = flug.getPrice();
+			assertTrue(currPrice <= prevPrice);
+			prevPrice = currPrice;
+		}
 	}
 	
 	@Test
 	public void SortTest2() {
-		container.sort("date");
+		ArrayList<Flight> reverseDateSortedList = container.sort("date", true);
+		assertNotNull(reverseDateSortedList);
+		Date currDate = new Date(1597903460000L);
+		Date prevDate = new Date(1597903460000L);
+		for (Flight flug : reverseDateSortedList) {
+			currDate = flug.getDepTime();
+			assertTrue(currDate.compareTo(prevDate) <=0 ) ;
+			prevDate = currDate;
+		}
 	}
 	
 	@Test
 	public void SortTest3() {
-		container.sort("");
+		ArrayList<Flight> DateSortedList = container.sort("date", false);
+		assertNotNull(DateSortedList);
+		Date currDate = new Date(0);
+		Date prevDate = new Date(0);
+		for (Flight flug : DateSortedList) {
+			currDate = flug.getDepTime();
+			assertTrue(currDate.compareTo(prevDate) >=0 ) ;
+			prevDate = currDate;
+		}
 	}
 	
 	@Test
-	public void FilterTest() {
-		String[] lala = {"WOW"};
-		container.filter(lala);
+	public void SortTest4() {
+		ArrayList<Flight> priceSortedList = container.sort("lala", false);
+		assertNotNull(priceSortedList);
+		double currPrice = 0;
+		double prevPrice = 0;
+		for (Flight flug : priceSortedList) {
+			currPrice = flug.getPrice();
+			assertTrue(currPrice >= prevPrice);
+			prevPrice = currPrice;
+		}
 	}
-	 
+	
+	@Test
+	public void FilterTest1Airline() {
+		String[] flugfelog = {"WOW","Emirates"};
+		ArrayList<Flight> filteredList = container.filter(flugfelog);
+		String airline;
+		for (Flight flug : filteredList) {
+			airline = flug.getAirline().getName();
+			assertTrue(Arrays.asList(flugfelog).contains(airline));
+		}
+	}
+	
 }

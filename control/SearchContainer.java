@@ -49,16 +49,22 @@ public class SearchContainer {
 	}
 	
 	
-	public ArrayList<Flight> sort(String s){
+	public ArrayList<Flight> sort(String s, Boolean r){
 		if (s == "date"){
 			Collections.sort(this.flightList, new DateComparator());
-			return flightList;
 		}
 		else {
 			Collections.sort(flightList);
+		}
+		if (r == false){
 			return flightList;
 		}
-		
+		else{
+			Collections.reverse(flightList);
+			return flightList;
+		}
+			
+			
 	}
 	
 	public ArrayList<Flight> search(int flightNum, Date date, City arrCity, City depCity, double price){
