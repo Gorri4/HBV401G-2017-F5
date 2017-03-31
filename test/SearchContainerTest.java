@@ -100,7 +100,8 @@ public class SearchContainerTest {
 	public void FilterTest3Airline() {
 		String[] flugfelog = {};
 		ArrayList<Flight> filteredList = container.filter(flugfelog);
-		assertTrue(filteredList.isEmpty());
+		ArrayList<Flight> sortedList = container.sort("", false);
+		assertTrue(filteredList.size() == sortedList.size());
 	}
 	
 }

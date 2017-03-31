@@ -44,7 +44,7 @@ public class SearchContainer {
 			return filteredFlightList;
 		}
 		else{
-			return filteredFlightList;
+			return this.flightList;
 		}
 	}
 	
