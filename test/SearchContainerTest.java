@@ -39,6 +39,9 @@ public class SearchContainerTest {
 		this.dags1 = null;
 	}
 	
+	
+	// Test the sort function sort() by
+	// sorting by the nonsense string: "lala"
 	@Test
 	public void SortTest1() {
 		ArrayList<Flight> fyrstiListi = container.getList();
@@ -53,6 +56,9 @@ public class SearchContainerTest {
 		}
 	}
 	
+	
+	// Test the sort function sort() by
+	// sorting in a reverse order by the empty string: ""
 	@Test
 	public void SortTest2() {
 		ArrayList<Flight> fyrstiListi = container.getList();
@@ -67,6 +73,8 @@ public class SearchContainerTest {
 		}
 	}
 	
+	// Test the sort function sort() by
+	// sorting an empty list by date: "date"
 	@Test
 	public void SortTest3() {
 		ArrayList<Flight> tomurListi = new ArrayList<Flight>();
@@ -75,6 +83,8 @@ public class SearchContainerTest {
 		assertTrue(emptySortedList.isEmpty());
 	}
 	
+	// Test the sort function sort() by
+	// sorting the list by date: "date"
 	@Test
 	public void SortTest4() {
 		ArrayList<Flight> fyrstiListi = container.getList();
@@ -89,6 +99,8 @@ public class SearchContainerTest {
 		}
 	}
 	
+	// Test the filter function filter() by
+	// filtering by the airlines WOW and Emirates
 	@Test
 	public void FilterTest1Airline() {
 		ArrayList<Flight> fyrstiListi = container.getList();
@@ -102,6 +114,8 @@ public class SearchContainerTest {
 		assertTrue(filteredList.size() <= fyrstiListi.size());
 	}
 	
+	// Test the filter function filter() by
+	// filtering by the nonsense airline EgErEkkiFlugfelag
 	@Test
 	public void FilterTest2Airline() {
 		String[] flugfelog = {"EgErEkkiFlugfelag"};
@@ -109,6 +123,8 @@ public class SearchContainerTest {
 		assertTrue(filteredList.isEmpty());
 	}
 	
+	// Test the filter function filter() by
+	// filtering by the nonsense airline EgErEkkiFlugfelag and the real airline WOW
 	@Test
 	public void FilterTest3Airline() {
 		ArrayList<Flight> fyrstiListi = container.getList();
@@ -122,6 +138,8 @@ public class SearchContainerTest {
 		assertTrue(filteredList.size() <= fyrstiListi.size());
 	}
 	
+	// Test the filter function filter() by
+	// filtering by no airline
 	@Test
 	public void FilterTest4Airline() {
 		String[] flugfelog = {};
