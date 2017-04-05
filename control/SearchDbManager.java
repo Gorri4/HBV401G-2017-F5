@@ -15,11 +15,29 @@ public class SearchDbManager implements SearchDbManagerInterface {
 		return null;
 	}
 	
-	/*public ResultSet execute(){
-		
-	}*/
+	public ResultSet execute(Date d, City c){
+		Connection a = null;
+		ResultSet rs = null;
+	    try {
+	      Class.forName("org.sqlite.JDBC");
+	      a = DriverManager.getConnection("jdbc:sqlite:database.db");
+	      
+	      Statement st = a.createStatement();
+	      String s = "SELECT * FROM Flights;";
+	      rs = st.executeQuery(s);
+	      
+	    } catch ( Exception e ) {
+	      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+	      System.exit(0);
+	    }
+	    System.out.println("Opened database successfully");
+	    return rs;
+	  
+	}
 	
-	/*public ResultSet createQuery(Date d, City c){
+	public ResultSet createQuery(Date d, City c){
+		ResultSet gogn = execute(d, c);
+		ArrayList<Flight> flightList = new ArrayList<Flight>();
 	 	try{
 				while(gogn.next()){
 					City dCity = new City(gogn.getString("departureCity"), 0);
@@ -43,11 +61,11 @@ public class SearchDbManager implements SearchDbManagerInterface {
 		}
 		
 		return null;
-	}*/
+	}
 	
 	public static void main( String args[] )
 	  {
-	    Connection c = null;
+	    /*Connection c = null;
 	    try {
 	      Class.forName("org.sqlite.JDBC");
 	      c = DriverManager.getConnection("jdbc:sqlite:database.db");
@@ -55,7 +73,44 @@ public class SearchDbManager implements SearchDbManagerInterface {
 	      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 	      System.exit(0);
 	    }
+	    System.out.println("Opened database successfully");*/
+	  
+		
+		
+		Connection a = null;
+		ResultSet rs = null;
+	    try {
+	      Class.forName("org.sqlite.JDBC");
+	      a = DriverManager.getConnection("jdbc:sqlite:database.db");
+	      
+	      Statement st = a.createStatement();
+	      String s = "SELECT * FROM Flights;";
+	      rs = st.executeQuery(s);
+	      
+	    } catch ( Exception e ) {
+	      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+	      System.exit(0);
+	    }
 	    System.out.println("Opened database successfully");
+	    
+	    
+	    
+	    //prenta resultset
+	    try{
+		    ResultSetMetaData rsmd = rs.getMetaData();
+		    int columnsNumber = rsmd.getColumnCount();
+		    while (rs.next()) {
+		        for (int i = 1; i <= columnsNumber; i++) {
+		            if (i > 1) System.out.print(",  ");
+		            String columnValue = rs.getString(i);
+		            System.out.print(columnValue + " " + rsmd.getColumnName(i));
+		        }
+		        System.out.println("");
+		    }
+	    }catch(Exception e){
+	    	
+	    }
+	    
 	  }
-
 }
+
