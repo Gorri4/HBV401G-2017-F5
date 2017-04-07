@@ -74,8 +74,8 @@ public class Flight implements Comparable<Flight>{
 		return (int)(this.price - y.price);
     }
 
-	public String toString() { 
-	    return "FlightNum: " + this.flightNum + ", Departure: " + this.getDepTime().toString() + ", From: " + this.getDepCity().getName() +", To: '" + this.getArrCity().getName() + ", Airline: " + this.getAirline().getName() ;
-	} 
+	//public String toString() { 
+	//    return "FlightNum: " + this.flightNum + ", Departure: " + this.getDepTime().toString() + ", From: " + this.getDepCity().getName() +", To: '" + this.getArrCity().getName() + ", Airline: " + this.getAirline().getName() ;
+	//} 
 	
 }

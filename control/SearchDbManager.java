@@ -2,6 +2,8 @@ package control;
 
 import java.sql.*;
 import java.util.ArrayList;
+
+
 import model.*;
 
 public class SearchDbManager implements SearchDbManagerInterface {
@@ -44,14 +46,13 @@ public class SearchDbManager implements SearchDbManagerInterface {
 				Airline al = new Airline(gogn.getString(6), 0, true, true);
 				Double timi = 9.4;
 				int flugNr = gogn.getInt(1);
-				Date arrTime = gogn.getDate(2);
-				Date depTime = gogn.getDate(3);
+				//Date arrTime = new Date(gogn.getDate(2).getTime());
+				//Date depTime = new Date(gogn.getDate(3).getTime());
+				Date arrTime = null;
+				Date depTime = null;
 				Double verd = gogn.getDouble(7);
 				System.out.print("u");
 				Flight nyttFlug = new Flight(flugNr, arrTime, depTime, dCity, aCity, timi, verd, plane, al);
-				System.out.print("m");
-				System.out.print(nyttFlug.toString());
-				System.out.println();
 				flightList.add(nyttFlug);
 			}
 		}
