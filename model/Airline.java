@@ -2,7 +2,7 @@
 
 package model;
 
-import java.util.List;
+//import java.util.List;
 
 public class Airline {
 	
@@ -10,16 +10,17 @@ public class Airline {
 	private double rating;
 	private boolean includedBag;
 	private boolean includedMeal;
-	private List<Flight> flights;
-	private List<Airplane> airplanes;
+	//private List<Flight> flights;
+	//private List<Airplane> airplanes;
 	
-	public Airline(String name, double rating, boolean includedBag, boolean includedMeal, List<Flight> flights, List<Airplane> airplanes) {
+	public Airline(String name, double rating, boolean includedBag, boolean includedMeal) {
+		System.out.print("u");
 		this.name=name;
 		this.rating=rating;
 		this.includedBag=includedBag;
 		this.includedMeal=includedMeal;
-		this.flights=flights;
-		this.airplanes=airplanes;		
+		//this.flights=flights;
+		//this.airplanes=airplanes;		
 	}
 	
 	public String getName(){

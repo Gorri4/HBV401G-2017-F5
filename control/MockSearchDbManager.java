@@ -22,10 +22,10 @@ public class MockSearchDbManager implements SearchDbManagerInterface{
 		Date dags1 = new Date(1497803417000L);
 		Date dags2 = new Date(1497903450000L);
 		Date dags3 = new Date(1497903460000L);
-		Airplane flugvel1 = new	Airplane(1, 1, null, 1);
-		Airline flugfelag1 = new Airline("WOW", 1, true, false, null, null);
-		Airline flugfelag2 = new Airline("IcelandAir", 1, true, false, null, null);
-		Airline flugfelag3 = new Airline("Emirates", 1, true, false, null, null);
+		Airplane flugvel1 = new	Airplane(1, 1, 1);
+		Airline flugfelag1 = new Airline("WOW", 1, true, false);
+		Airline flugfelag2 = new Airline("IcelandAir", 1, true, false);
+		Airline flugfelag3 = new Airline("Emirates", 1, true, false);
 		ArrayList<Flight> flightList = new ArrayList<Flight>();
 		Flight flug1 = new Flight(1, dags2, dags3, borg1, borg2, 2, 1000, flugvel1, flugfelag1); 
 		Flight flug2 = new Flight(2, dags1, dags2, borg1, borg2, 2, 1200, flugvel1, flugfelag2); 

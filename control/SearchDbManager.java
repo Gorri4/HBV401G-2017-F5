@@ -2,7 +2,6 @@ package control;
 
 import java.sql.*;
 import java.util.ArrayList;
-
 import model.*;
 
 public class SearchDbManager implements SearchDbManagerInterface {
@@ -37,33 +36,36 @@ public class SearchDbManager implements SearchDbManagerInterface {
 	public ArrayList<Flight> createQuery(Date d, City c){
 		ResultSet gogn = execute(d, c);
 		ArrayList<Flight> flightList = new ArrayList<Flight>();
-	 	try{
-				while(gogn.next()){
-					City dCity = new City(gogn.getString("departureCity"), 0);
-					City aCity = new City(gogn.getString("arrivalCity"), 0);
-					Airplane plane = new Airplane(1, 1, null, gogn.getInt("airplaneID"));
-					Airline al = new Airline(gogn.getString("airline"), 0, true, true, null, null);
-					Flight nyttFlug = new Flight(gogn.getInt("flightNum"), 
-												gogn.getDate("departureTime"), 
-												gogn.getDate("arrivalTime"), 
-												dCity, 
-												aCity,
-												1,
-												gogn.getDouble("price"),
-												plane,
-												al);
-					flightList.add(nyttFlug);
-				}
+		try{
+			while (gogn.next()) {
+				City dCity = new City(gogn.getString(4), 0);
+				City aCity = new City(gogn.getString(5), 0);
+				Airplane plane = new Airplane(1, 1, gogn.getInt(8));
+				Airline al = new Airline(gogn.getString(6), 0, true, true);
+				Double timi = 9.4;
+				int flugNr = gogn.getInt(1);
+				Date arrTime = gogn.getDate(2);
+				Date depTime = gogn.getDate(3);
+				Double verd = gogn.getDouble(7);
+				System.out.print("u");
+				Flight nyttFlug = new Flight(flugNr, arrTime, depTime, dCity, aCity, timi, verd, plane, al);
+				System.out.print("m");
+				System.out.print(nyttFlug.toString());
+				System.out.println();
+				flightList.add(nyttFlug);
 			}
-			catch(Exception e){
-			
 		}
+		catch(Exception e){
+		}
+
 		return flightList;
+	
+	    
 	}
 	
 	public static void main( String args[] )
 	  {
-	    /*Connection c = null;
+	    Connection c = null;
 	    try {
 	      Class.forName("org.sqlite.JDBC");
 	      c = DriverManager.getConnection("jdbc:sqlite:database.db");
@@ -71,7 +73,7 @@ public class SearchDbManager implements SearchDbManagerInterface {
 	      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 	      System.exit(0);
 	    }
-	    System.out.println("Opened database successfully");*/
+	    System.out.println("Opened database successfully");
 	  
 		
 		

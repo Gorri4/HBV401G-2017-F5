@@ -15,6 +15,7 @@ public class Flight implements Comparable<Flight>{
 	private Airline airline;
 
 	public Flight(int flightNum, Date departureTime, Date arrivalTime, City departureCity, City arrivalCity, double flightTime, double price, Airplane airplane, Airline airline) {
+		System.out.print("j");
 		this.flightNum=flightNum;
 		this.departureTime=departureTime;
 		this.arrivalTime=arrivalTime;

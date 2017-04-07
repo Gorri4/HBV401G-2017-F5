@@ -1,6 +1,6 @@
 package model;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
 public class Airplane {
@@ -8,14 +8,14 @@ public class Airplane {
 	private int airplaneID;
 	private int numOfSeats;
 	private int numOfBusinessClass;
-	private ArrayList<Seat> seats;
+	//private ArrayList<Seat> seats;
 	
 
-	public Airplane(int numOfSeats, int numOfBusinessClass, ArrayList<Seat> seats, int airplaneID) {
+	public Airplane(int numOfSeats, int numOfBusinessClass, int airplaneID) {
 		this.airplaneID=airplaneID;
 		this.numOfSeats=numOfSeats;
 		this.numOfBusinessClass=numOfBusinessClass;
-		this.seats = seats;
+		//this.seats = seats;
 	}
 	
 	public int getNumOfSeats(){
@@ -24,5 +24,9 @@ public class Airplane {
 	
 	public int getNumOfBusinessClass(){
 		return numOfBusinessClass;
+	}
+	
+	public int getAirplaneID(){
+		return airplaneID;
 	}
 }
