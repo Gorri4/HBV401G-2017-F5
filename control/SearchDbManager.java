@@ -32,10 +32,9 @@ public class SearchDbManager implements SearchDbManagerInterface {
 	    }
 	    System.out.println("Opened database successfully");
 	    return rs;
-	  
 	}
 	
-	public ResultSet createQuery(Date d, City c){
+	public ArrayList<Flight> createQuery(Date d, City c){
 		ResultSet gogn = execute(d, c);
 		ArrayList<Flight> flightList = new ArrayList<Flight>();
 	 	try{
@@ -59,8 +58,7 @@ public class SearchDbManager implements SearchDbManagerInterface {
 			catch(Exception e){
 			
 		}
-		
-		return null;
+		return flightList;
 	}
 	
 	public static void main( String args[] )

@@ -25,8 +25,10 @@ public class MainWindow extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private SearchDbManagerInterface Mock = new MockSearchDbManager();
-	private SearchContainer sc = new SearchContainer(Mock);
+	//private SearchDbManagerInterface Mock = new MockSearchDbManager();
+	//private SearchContainer sc = new SearchContainer(Mock);
+	private SearchDbManagerInterface RealDbManager = new SearchDbManager();
+	private SearchContainer sc = new SearchContainer(RealDbManager);
 	//private ListPanel lp = new ListPanel();
 	private ListPanel panel_1;
 	private DefaultListModel<Flight> model = new DefaultListModel<Flight>();

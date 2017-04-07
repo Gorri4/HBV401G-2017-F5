@@ -16,7 +16,7 @@ public class MockSearchDbManager implements SearchDbManagerInterface{
 	
 	// This is a mock function that always returns an 
 	// ArrayList of five fixed flight objects
-	public ArrayList<Flight> createQuery(int flightNum, Date date, City arrCity, City depCity, double price){
+	public ArrayList<Flight> createQuery(Date date, City arrCity){
 		City borg1 = new City("Berlin", 0);
 		City borg2 = new City("Paris", 0);
 		Date dags1 = new Date(1497803417000L);
