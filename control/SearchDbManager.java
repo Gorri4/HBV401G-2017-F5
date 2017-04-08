@@ -47,10 +47,8 @@ public class SearchDbManager implements SearchDbManagerInterface {
 				Airline al = new Airline(gogn.getString(6), 0, true, true);
 				Double timi = 9.4;
 				int flugNr = gogn.getInt(1);
-				//Date arrTime = new Date(gogn.getDate(2).getTime());
-				//Date depTime = new Date(gogn.getDate(3).getTime());
-				Date arrTime = null;
-				Date depTime = null;
+				Date arrTime = new Date(gogn.getLong(2));
+				Date depTime = new Date(gogn.getLong(3));
 				Double verd = gogn.getDouble(7);
 				Flight nyttFlug = new Flight(flugNr, arrTime, depTime, dCity, aCity, timi, verd, plane, al);
 				flightList.add(nyttFlug);

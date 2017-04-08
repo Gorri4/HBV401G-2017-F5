@@ -14,7 +14,6 @@ public class Airline {
 	//private List<Airplane> airplanes;
 	
 	public Airline(String name, double rating, boolean includedBag, boolean includedMeal) {
-		System.out.print("u");
 		this.name=name;
 		this.rating=rating;
 		this.includedBag=includedBag;
