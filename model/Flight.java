@@ -15,7 +15,6 @@ public class Flight implements Comparable<Flight>{
 	private Airline airline;
 
 	public Flight(int flightNum, Date departureTime, Date arrivalTime, City departureCity, City arrivalCity, double flightTime, double price, Airplane airplane, Airline airline) {
-		System.out.print("j");
 		this.flightNum=flightNum;
 		this.departureTime=departureTime;
 		this.arrivalTime=arrivalTime;
@@ -74,8 +73,8 @@ public class Flight implements Comparable<Flight>{
 		return (int)(this.price - y.price);
     }
 
-	//public String toString() { 
-	//    return "FlightNum: " + this.flightNum + ", Departure: " + this.getDepTime().toString() + ", From: " + this.getDepCity().getName() +", To: '" + this.getArrCity().getName() + ", Airline: " + this.getAirline().getName() ;
-	//} 
+	public String toString() { 
+	    return "FlightNum: " + this.flightNum + /*", Departure: " + this.getDepTime().toString() + */", From: " + this.getDepCity().getName() +", To: '" + this.getArrCity().getName() + ", Airline: " + this.getAirline().getName() ;
+	} 
 	
 }

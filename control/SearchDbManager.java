@@ -24,7 +24,8 @@ public class SearchDbManager implements SearchDbManagerInterface {
 	      a = DriverManager.getConnection("jdbc:sqlite:database.db");
 	      
 	      Statement st = a.createStatement();
-	      String s = "SELECT * FROM Flights;";
+	      String borg = c.getName();
+	      String s = String.format("SELECT * FROM Flights WHERE arrivalCity = '%s'",borg);
 	      rs = st.executeQuery(s);
 	      
 	    } catch ( Exception e ) {
@@ -51,7 +52,6 @@ public class SearchDbManager implements SearchDbManagerInterface {
 				Date arrTime = null;
 				Date depTime = null;
 				Double verd = gogn.getDouble(7);
-				System.out.print("u");
 				Flight nyttFlug = new Flight(flugNr, arrTime, depTime, dCity, aCity, timi, verd, plane, al);
 				flightList.add(nyttFlug);
 			}
