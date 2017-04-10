@@ -6,6 +6,6 @@ import model.*;
 
 public interface SearchDbManagerInterface {
 	
-	public ArrayList<Flight> createQuery(Date date, City arrCity);
+	public ArrayList<Flight> createQuery(Long l, City arrCity);
 
 	}

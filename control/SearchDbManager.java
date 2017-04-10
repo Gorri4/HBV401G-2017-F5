@@ -12,27 +12,39 @@ public class SearchDbManager implements SearchDbManagerInterface {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ResultSet execute(Date d, City c){
+	public ResultSet execute(Long l, City c){
 		Connection a = null;
 		ResultSet rs = null;
 	    try {
 	      Class.forName("org.sqlite.JDBC");
 	      a = DriverManager.getConnection("jdbc:sqlite:database.db");
-	      String borg = c.getName();
-	      if (d ==null){
-	    	  String sql = "SELECT * FROM Flights WHERE arrivalCity = ? ";
-	    	  PreparedStatement prepStmt = a.prepareStatement(sql);
+	      PreparedStatement prepStmt = null;
+	      if (l == null){
+	    	  String borg = c.getName();
+	    	  String sql = "SELECT * FROM Flights "
+	    	  		+ "WHERE arrivalCity = ? ";
+	    	  prepStmt = a.prepareStatement(sql);
 	    	  prepStmt.setString(1, borg);
 	      }
-	      else if (c == null){
-	    	  String sql = "SELECT * FROM Flights WHERE departureTime = ? ";
-	    	  PreparedStatement prepStmt = a.prepareStatement(sql);
-	    	  prepStmt.setString(1, borg);
+	      else if (c == null) {
+	    	  String sql = "SELECT * FROM Flights "
+	    	  		+ "WHERE departureTime BETWEEN ? and ? ";
+	    	  prepStmt = a.prepareStatement(sql);
+	    	  prepStmt.setLong(1, l);
+	    	  prepStmt.setLong(2, l + 86400);
 	      }	
+	      else{
+	    	  String borg = c.getName();
+	    	  String sql = "SELECT * FROM Flights "
+	    	  		+ "WHERE arrivalCity = ? "
+	    	  		+ "AND departureTime BETWEEN ? and ? ";
+	    	  prepStmt = a.prepareStatement(sql);
+	    	  prepStmt.setString(1, borg);
+	    	  prepStmt.setLong(2, l);
+	    	  prepStmt.setLong(3, l + 86400);
+	      }
 	     
-	      
-	      
-	      //rs = prepStmt.executeQuery();
+	      rs = prepStmt.executeQuery();
 
 	      
 	    } catch ( Exception e ) {
@@ -43,8 +55,8 @@ public class SearchDbManager implements SearchDbManagerInterface {
 	    return rs;
 	}
 	
-	public ArrayList<Flight> createQuery(Date d, City c){
-		ResultSet gogn = execute(d, c);
+	public ArrayList<Flight> createQuery(Long l, City c){
+		ResultSet gogn = execute(l, c);
 		ArrayList<Flight> flightList = new ArrayList<Flight>();
 		try{
 			while (gogn.next()) {

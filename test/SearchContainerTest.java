@@ -18,7 +18,7 @@ public class SearchContainerTest {
 	private SearchDbManagerInterface Mock;
 	private City borg1;
 	private City borg2;
-	private Date dags1;
+	private long dags1;
 	
 	@Before 
 	public void setUp() {
@@ -26,7 +26,7 @@ public class SearchContainerTest {
 		this.container = new SearchContainer(Mock);
 		this.borg1 = new City("Berlin", 0);
 		this.borg2 = new City("Paris", 0);
-		this.dags1 = new Date(1497803417);
+		this.dags1 = 1497803417;
 		this.container.search(1,dags1,borg1,borg2,1);
 	}
 	
@@ -36,7 +36,7 @@ public class SearchContainerTest {
 		this.Mock = null;
 		this.borg1 = null;
 		this.borg2 = null;
-		this.dags1 = null;
+		this.dags1 = -1L;
 	}
 	
 	
