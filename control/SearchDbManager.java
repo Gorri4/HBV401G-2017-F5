@@ -12,21 +12,28 @@ public class SearchDbManager implements SearchDbManagerInterface {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ArrayList<Flight> createQuery(int flightNum, Date date, City arrCity, City depCity, double price){
-		return null;
-	}
-	
 	public ResultSet execute(Date d, City c){
 		Connection a = null;
 		ResultSet rs = null;
 	    try {
 	      Class.forName("org.sqlite.JDBC");
 	      a = DriverManager.getConnection("jdbc:sqlite:database.db");
-	      
-	      Statement st = a.createStatement();
 	      String borg = c.getName();
-	      String s = String.format("SELECT * FROM Flights WHERE arrivalCity = '%s'",borg);
-	      rs = st.executeQuery(s);
+	      if (d ==null){
+	    	  String sql = "SELECT * FROM Flights WHERE arrivalCity = ? ";
+	    	  PreparedStatement prepStmt = a.prepareStatement(sql);
+	    	  prepStmt.setString(1, borg);
+	      }
+	      else if (c == null){
+	    	  String sql = "SELECT * FROM Flights WHERE departureTime = ? ";
+	    	  PreparedStatement prepStmt = a.prepareStatement(sql);
+	    	  prepStmt.setString(1, borg);
+	      }	
+	     
+	      
+	      
+	      //rs = prepStmt.executeQuery();
+
 	      
 	    } catch ( Exception e ) {
 	      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
