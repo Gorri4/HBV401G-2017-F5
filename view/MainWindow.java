@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JComboBox;
 
 public class MainWindow extends JFrame {
 
@@ -32,6 +33,14 @@ public class MainWindow extends JFrame {
 	//private ListPanel lp = new ListPanel();
 	private ListPanel panel_1;
 	private DefaultListModel<Flight> model = new DefaultListModel<Flight>();
+	
+	private String[] days = new String[] {"","1.", "2.", "3.", "4.", "5.", "6.", "7.", "8.",
+										"9.", "10.", "11.", "12.", "13.", "14.", "15.",
+										"16.", "17.", "18.", "19.", "20.", "21.", "22.", 
+										"23.", "24.", "25.", "26.", "27.", "28.", "29.", "30.", "31."};
+	private String[] months = new String[] {"", "January", "February", "Mars", "April", "May", "June", 
+											"July", "August", "September", "October", "November", "December"};
+	private String[] years = new String[] {"", "2017", "2018", "2019"};
 
 	/**
 	 * Launch the application.
@@ -54,7 +63,7 @@ public class MainWindow extends JFrame {
 	 */
 	public MainWindow() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 521, 437);
+		setBounds(100, 100, 592, 486);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -82,6 +91,18 @@ public class MainWindow extends JFrame {
 			}
 		});
 		panel.add(btnClickSearch);
+		
+		JLabel lblDate = new JLabel("Date:");
+		panel.add(lblDate);
+		
+		JComboBox comboMonth = new JComboBox(months);
+		panel.add(comboMonth);
+		
+		JComboBox comboDay = new JComboBox(days);
+		panel.add(comboDay);
+		
+		JComboBox comboYear = new JComboBox(years);
+		panel.add(comboYear);
 		
 		panel_1 = new ListPanel(model);
 		contentPane.add(panel_1, BorderLayout.CENTER);
