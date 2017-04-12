@@ -4,8 +4,9 @@ public class Booking {
 
 	private Seat seat;
 	private Passenger passenger;
+	private int flightID;
 	
-	public Booking(Seat seat, Passenger passenger){
+	public Booking(Seat seat, Passenger passenger, int flightID){
 		this.passenger = passenger;
 		this.seat = seat;
 	}
@@ -16,5 +17,9 @@ public class Booking {
 	
 	public Seat getSeat(){
 		return seat;
+	}
+	
+	public int getFlightID(){
+		return flightID;
 	}
 }

@@ -10,9 +10,12 @@ public class BookingManager {
 		this.bookings = new ArrayList<Booking>();
 	}
 
-	public void book(Seat seat, Passenger passenger){
-		Booking booking = new Booking(seat,passenger);
-		bookings.add(booking);	
+	public void book(Seat seat, Passenger passenger, int flightID){
+		Booking booking = new Booking(seat,passenger,flightID);
+		bookings.add(booking);
+		
+		BookingDbManager manager = new BookingDbManager();
+		manager.insertToDb(booking);
 	}
 	
 	public ArrayList<Booking> getBookings(){
