@@ -1,5 +1,7 @@
 package control;
 import java.util.ArrayList;
+import java.util.Collections;
+
 import model.*;
 
 public class BookingManager {
@@ -18,7 +20,10 @@ public class BookingManager {
 		manager.insertToDb(booking);
 	}
 	
-	public ArrayList<Booking> getBookings(){
+	public ArrayList<Booking> getBookings(int flightID){
+		BookingDbManager manager = new BookingDbManager();
+		this.bookings = manager.createQuery(flightID);
+		Collections.sort(bookings);
 		return bookings;
 	}
 		

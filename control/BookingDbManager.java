@@ -8,7 +8,6 @@ import java.util.List;
 
 public class BookingDbManager {
 	
-	//private ArrayList<Seat,Passenger> bookings; // b�a til hlut sem er booking
 
 	public BookingDbManager() {
 		// TODO Auto-generated constructor stub

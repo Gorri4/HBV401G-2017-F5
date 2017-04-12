@@ -1,6 +1,6 @@
 package model;
 
-public class Booking {
+public class Booking implements Comparable<Booking>{
 
 	private Seat seat;
 	private Passenger passenger;
@@ -22,4 +22,9 @@ public class Booking {
 	public int getFlightID(){
 		return flightID;
 	}
+	
+	@Override
+	public int compareTo(Booking y) {
+		return (this.seat.getSeatNumber().compareTo(y.seat.getSeatNumber()));
+    }
 }
