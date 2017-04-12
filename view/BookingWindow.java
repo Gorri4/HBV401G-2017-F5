@@ -25,6 +25,7 @@ public class BookingWindow extends JFrame {
 	private JTextField textField;
 
 	private String seatNum;
+	private JTextField textField_1;
 	/**
 	 * Launch the application.
 	 */
@@ -56,16 +57,16 @@ public class BookingWindow extends JFrame {
 		contentPane.add(panel, BorderLayout.CENTER);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{175, 216, 0};
-		gbl_panel.rowHeights = new int[]{0, 0, 0, 0};
+		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_panel.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		JLabel lblName = new JLabel("Name:");
 		GridBagConstraints gbc_lblName = new GridBagConstraints();
 		gbc_lblName.insets = new Insets(0, 0, 5, 5);
 		gbc_lblName.gridx = 0;
-		gbc_lblName.gridy = 0;
+		gbc_lblName.gridy = 3;
 		panel.add(lblName, gbc_lblName);
 		
 		textField = new JTextField();
@@ -73,16 +74,32 @@ public class BookingWindow extends JFrame {
 		gbc_textField.insets = new Insets(0, 0, 5, 0);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 0;
+		gbc_textField.gridy = 3;
 		panel.add(textField, gbc_textField);
 		textField.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("Kennitala:");
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_1.gridx = 0;
+		gbc_lblNewLabel_1.gridy = 4;
+		panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
+		textField_1 = new JTextField();
+		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
+		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
+		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_1.gridx = 1;
+		gbc_textField_1.gridy = 4;
+		panel.add(textField_1, gbc_textField_1);
+		textField_1.setColumns(10);
 		
 		JLabel lblSeatNumber = new JLabel("Select seatnumber to book:");
 		GridBagConstraints gbc_lblSeatNumber = new GridBagConstraints();
 		gbc_lblSeatNumber.anchor = GridBagConstraints.EAST;
 		gbc_lblSeatNumber.insets = new Insets(0, 0, 5, 5);
 		gbc_lblSeatNumber.gridx = 0;
-		gbc_lblSeatNumber.gridy = 1;
+		gbc_lblSeatNumber.gridy = 5;
 		panel.add(lblSeatNumber, gbc_lblSeatNumber);
 		
 		
@@ -103,7 +120,7 @@ public class BookingWindow extends JFrame {
 		gbc_comboBox.anchor = GridBagConstraints.WEST;
 		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBox.gridx = 1;
-		gbc_comboBox.gridy = 1;
+		gbc_comboBox.gridy = 5;
 		panel.add(comboBox, gbc_comboBox);
 		
 		JPanel panel_2 = new JPanel();
@@ -111,7 +128,7 @@ public class BookingWindow extends JFrame {
 		gbc_panel_2.anchor = GridBagConstraints.SOUTH;
 		gbc_panel_2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panel_2.gridx = 1;
-		gbc_panel_2.gridy = 2;
+		gbc_panel_2.gridy = 8;
 		panel.add(panel_2, gbc_panel_2);
 		
 		JButton btnNewButton = new JButton("Book flight!");
@@ -143,7 +160,25 @@ public class BookingWindow extends JFrame {
 	
 	
 	private void saveBooking() {
-		
+		String name = textField.getText();
+		String kt = textField_1.getText();
+		int kennitala ;
+		//name not empty
+		if(!name.equals("") /*&& !kt.equals("")*/){
+			//check if ther is a number in kennitala field
+			try {
+			    kennitala = Integer.parseInt(textField_1.getText());
+			} catch (NumberFormatException e) {
+			    KennitalaError ke = new KennitalaError();
+			    ke.setVisible(true);
+			}
+			//book flight here
+		}
+		else{
+			//name empty
+			NoNameWarning nnw = new NoNameWarning();
+			nnw.setVisible(true);
+		}
 		
 	}
 
