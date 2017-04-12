@@ -9,6 +9,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 
@@ -42,6 +43,7 @@ public class MainWindow extends JFrame {
 	//private ListPanel lp = new ListPanel();
 	private ListPanel panel_1;
 	private DefaultListModel<Flight> model = new DefaultListModel<Flight>();
+	//private DefaultTableModel mdl = new DefaultTableModel();
 	
 	private String[] days = new String[] {"","01", "02", "03", "04", "05", "06", "07", "08",
 										"09", "10", "11", "12", "13", "14", "15",
@@ -152,6 +154,8 @@ public class MainWindow extends JFrame {
 		panel.add(btnClickSearch);
 		
 		panel_1 = new ListPanel(model);
+		//panel_1 = new TablePanel(mdl);
+
 		panel_1.setBackground(Color.WHITE);
 		panel_1.setForeground(Color.BLACK);
 		contentPane.add(panel_1, BorderLayout.CENTER);
