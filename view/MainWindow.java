@@ -25,8 +25,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JComboBox;
 import java.awt.Color;
-import javax.swing.border.TitledBorder;
-import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
+import java.awt.Font;
 
 public class MainWindow extends JFrame {
 
@@ -74,17 +74,18 @@ public class MainWindow extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 748, 486);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(new Color(255, 140, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(null);
-		panel.setBackground(Color.ORANGE);
+		panel.setBorder(new LineBorder(new Color(255, 140, 0), 5));
+		panel.setBackground(new Color(255, 140, 0));
 		contentPane.add(panel, BorderLayout.NORTH);
 		
 		textField = new JTextField();
+		textField.setBackground(new Color(255, 255, 255));
 		textField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				clickSearch();
@@ -92,14 +93,17 @@ public class MainWindow extends JFrame {
 		});
 		
 		JLabel lblSearchCities = new JLabel("Search cities:");
+		lblSearchCities.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
 		panel.add(lblSearchCities);
 		panel.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblDate = new JLabel("Month:");
+		lblDate.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
 		panel.add(lblDate);
 		
 		JComboBox comboMonth = new JComboBox(months);
+		comboMonth.setBackground(new Color(245, 222, 179));
 		comboMonth.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox kassi = (JComboBox)e.getSource();
@@ -110,6 +114,7 @@ public class MainWindow extends JFrame {
 		panel.add(comboMonth);
 		
 		JComboBox comboDay = new JComboBox(days);
+		comboDay.setBackground(new Color(245, 222, 179));
 		comboDay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox kassi = (JComboBox)e.getSource();
@@ -119,6 +124,7 @@ public class MainWindow extends JFrame {
 		});
 		
 		JLabel lblDay = new JLabel("Day:");
+		lblDay.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
 		panel.add(lblDay);
 		panel.add(comboDay);
 		
@@ -132,10 +138,12 @@ public class MainWindow extends JFrame {
 		});
 		
 		JLabel lblYear = new JLabel("Year:");
+		lblYear.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
 		panel.add(lblYear);
 		panel.add(comboYear);
 		
 		JButton btnClickSearch = new JButton("Search");
+		btnClickSearch.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
 		btnClickSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clickSearch();
@@ -144,7 +152,7 @@ public class MainWindow extends JFrame {
 		panel.add(btnClickSearch);
 		
 		panel_1 = new ListPanel(model);
-		panel_1.setBackground(Color.ORANGE);
+		panel_1.setBackground(Color.WHITE);
 		panel_1.setForeground(Color.BLACK);
 		contentPane.add(panel_1, BorderLayout.CENTER);
 	}

@@ -15,6 +15,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Component;
 import javax.swing.BoxLayout;
+import java.awt.Font;
 
 public class ListPanel extends JPanel {
 
@@ -32,6 +33,7 @@ public class ListPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		add(scrollPane);
 		list = new JList<Flight>(model);
+		list.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
 		scrollPane.setViewportView(list);
 		
 		
