@@ -29,9 +29,9 @@ public class MainWindow extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JComboBox comboDay;
-	private JComboBox comboMonth;
-	private JComboBox comboYear;
+	private String day;
+	private String month;
+	private String year;
 	//private SearchDbManagerInterface Mock = new MockSearchDbManager();
 	//private SearchContainer sc = new SearchContainer(Mock);
 	private SearchDbManagerInterface RealDbManager = new SearchDbManager();
@@ -40,12 +40,12 @@ public class MainWindow extends JFrame {
 	private ListPanel panel_1;
 	private DefaultListModel<Flight> model = new DefaultListModel<Flight>();
 	
-	private String[] days = new String[] {"","1.", "2.", "3.", "4.", "5.", "6.", "7.", "8.",
-										"9.", "10.", "11.", "12.", "13.", "14.", "15.",
-										"16.", "17.", "18.", "19.", "20.", "21.", "22.", 
-										"23.", "24.", "25.", "26.", "27.", "28.", "29.", "30.", "31."};
-	private String[] months = new String[] {"", "January", "February", "Mars", "April", "May", "June", 
-											"July", "August", "September", "October", "November", "December"};
+	private String[] days = new String[] {"","01", "02", "03", "04", "05", "06", "07", "08",
+										"09", "10", "11", "12", "13", "14", "15",
+										"16", "17", "18", "19", "20", "21", "22", 
+										"23", "24", "25", "26", "27", "28", "29", "30", "31"};
+	private String[] months = new String[] {"", "01", "02", "03", "04", "05", "06", 
+											"07", "08", "09", "10", "11", "12"};
 	private String[] years = new String[] {"", "2017", "2018", "2019"};
 
 	/**
@@ -102,12 +102,30 @@ public class MainWindow extends JFrame {
 		panel.add(lblDate);
 		
 		JComboBox comboMonth = new JComboBox(months);
+		comboMonth.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JComboBox kassi = (JComboBox)e.getSource();
+				month = (String) kassi.getSelectedItem();
+			}
+		});
 		panel.add(comboMonth);
 		
 		JComboBox comboDay = new JComboBox(days);
+		comboDay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JComboBox kassi = (JComboBox)e.getSource();
+				day = (String) kassi.getSelectedItem();
+			}
+		});
 		panel.add(comboDay);
 		
 		JComboBox comboYear = new JComboBox(years);
+		comboYear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JComboBox kassi = (JComboBox)e.getSource();
+				year = (String) kassi.getSelectedItem();
+			}
+		});
 		panel.add(comboYear);
 		
 		panel_1 = new ListPanel(model);
@@ -120,26 +138,25 @@ public class MainWindow extends JFrame {
 		String s = textField.getText();
 		System.out.println(s);
 		City c = new City(s,0);
-		Object day = comboDay.getSelectedItem();
-		Object month = comboMonth.getSelectedItem();
-		Object year = comboYear.getSelectedItem();
-		String dagur = day.toString();
-		String manudur = month.toString();
-		String ar = year.toString();
 		
-		String string_date = dagur + "-" + manudur + "-" + ar;
-
-		SimpleDateFormat f = new SimpleDateFormat("dd-MMM-yyyy");
-		long milliseconds = -1L;
-		try {
-		    Date d = f.parse(string_date);
-		    milliseconds = d.getTime();
-		} catch (ParseException e) {
-		    e.printStackTrace();
+		ArrayList<Flight> alist = null;
+		if( day == null|| month == null || year == null){
+			alist = sc.search(0, null, c, null, 0);
 		}
-		
-		ArrayList<Flight> alist = sc.search(0, milliseconds, c, null, 0);
-		
+		else{
+			String string_date = day + "-" + month + "-" + year;
+
+			SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+			long milliseconds = -1L;
+			try {
+		    	Date d = f.parse(string_date);
+		    	milliseconds = d.getTime();
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			System.out.print(milliseconds);
+			alist = sc.search(0, milliseconds, c, null, 0);
+		}
 		//sc.sort("date");
 		 //alist=sc.sort("lala");
 		/*String[] g = {"WOW", "Emirates"};
