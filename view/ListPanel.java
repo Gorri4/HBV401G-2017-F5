@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -20,6 +21,7 @@ public class ListPanel extends JPanel {
 	DefaultListModel<Flight> model;
 	ArrayList<Flight> arrlist;
 	JList<Flight> list;
+	
 	/**
 	 * Create the panel.
 	 */

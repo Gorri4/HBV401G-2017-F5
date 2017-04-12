@@ -14,6 +14,10 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 import model.*;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BookingWindow extends JFrame {
 
@@ -40,7 +44,7 @@ public class BookingWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public BookingWindow(Flight f) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 545, 348);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -72,12 +76,41 @@ public class BookingWindow extends JFrame {
 		panel.add(textField, gbc_textField);
 		textField.setColumns(10);
 		
-		JLabel lblSeatNumber = new JLabel("Select seatnumber you want to book:");
+		JLabel lblSeatNumber = new JLabel("Select seatnumber to book:");
 		GridBagConstraints gbc_lblSeatNumber = new GridBagConstraints();
+		gbc_lblSeatNumber.anchor = GridBagConstraints.EAST;
 		gbc_lblSeatNumber.insets = new Insets(0, 0, 5, 5);
 		gbc_lblSeatNumber.gridx = 0;
 		gbc_lblSeatNumber.gridy = 1;
 		panel.add(lblSeatNumber, gbc_lblSeatNumber);
+		
+		JComboBox comboBox = new JComboBox();
+		GridBagConstraints gbc_comboBox = new GridBagConstraints();
+		gbc_comboBox.anchor = GridBagConstraints.WEST;
+		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBox.gridx = 1;
+		gbc_comboBox.gridy = 1;
+		panel.add(comboBox, gbc_comboBox);
+		
+		JPanel panel_2 = new JPanel();
+		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2.anchor = GridBagConstraints.SOUTH;
+		gbc_panel_2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_panel_2.gridx = 1;
+		gbc_panel_2.gridy = 2;
+		panel.add(panel_2, gbc_panel_2);
+		
+		JButton btnNewButton = new JButton("Book flight!");
+		panel_2.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Cancel");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false); 
+				dispose(); //Destroy the JFrame object
+			}
+		});
+		panel_2.add(btnNewButton_1);
 		
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.NORTH);
