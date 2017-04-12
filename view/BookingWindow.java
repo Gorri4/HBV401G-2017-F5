@@ -24,6 +24,7 @@ public class BookingWindow extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 
+	private String seatNum;
 	/**
 	 * Launch the application.
 	 */
@@ -86,13 +87,18 @@ public class BookingWindow extends JFrame {
 		
 		
 		int seatquantity = f.getAirplane().getNumOfSeats();
-		System.out.println("bla"+ seatquantity);
-		Integer[] seatarray = new Integer[seatquantity];
+		String[] seatarray = new String[seatquantity];
 		for (int i=0; i<seatquantity; i++){
-			seatarray[0] = i;
+			seatarray[i] = i+"";
 		}
 		
-		JComboBox<Integer> comboBox = new JComboBox<Integer>(seatarray);
+		JComboBox comboBox = new JComboBox(seatarray);
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JComboBox kassi = (JComboBox)e.getSource();
+				seatNum = (String) kassi.getSelectedItem();
+			}
+		});
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.anchor = GridBagConstraints.WEST;
 		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
@@ -109,6 +115,11 @@ public class BookingWindow extends JFrame {
 		panel.add(panel_2, gbc_panel_2);
 		
 		JButton btnNewButton = new JButton("Book flight!");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				saveBooking();
+			}
+		});
 		panel_2.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Cancel");
@@ -128,6 +139,12 @@ public class BookingWindow extends JFrame {
 	
 		JLabel lblNewLabel = new JLabel(f.getFlightNum() + "");
 		panel_1.add(lblNewLabel);
+	}
+	
+	
+	private void saveBooking() {
+		
+		
 	}
 
 }
