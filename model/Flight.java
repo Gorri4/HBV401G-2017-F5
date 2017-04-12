@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Flight implements Comparable<Flight>{
 	
@@ -74,7 +75,7 @@ public class Flight implements Comparable<Flight>{
     }
 
 	public String toString() { 
-	    return "FlightNum: " + this.flightNum + ", Departure: " + this.getDepTime() + ", From: " + this.getDepCity().getName() +", To: '" + this.getArrCity().getName() + ", Airline: " + this.getAirline().getName() ;
-	} 
+	    return "FlightNum: " + this.flightNum + ", Departure: " + this.getDepTime().toString().substring(4, 10) + " " + this.getDepTime().toString().substring(24, 28) + " - " + this.getDepTime().toString().substring(11, 16) + ", From: " + this.getDepCity().getName() +", To: '" + this.getArrCity().getName() + ", Airline: " + this.getAirline().getName() ;
+	}
 	
 }

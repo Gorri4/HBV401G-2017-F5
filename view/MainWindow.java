@@ -24,6 +24,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JComboBox;
+import java.awt.Color;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.BevelBorder;
 
 public class MainWindow extends JFrame {
 
@@ -69,13 +72,16 @@ public class MainWindow extends JFrame {
 	 */
 	public MainWindow() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 592, 486);
+		setBounds(100, 100, 748, 486);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setBorder(null);
+		panel.setBackground(Color.ORANGE);
 		contentPane.add(panel, BorderLayout.NORTH);
 		
 		textField = new JTextField();
@@ -90,15 +96,7 @@ public class MainWindow extends JFrame {
 		panel.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnClickSearch = new JButton("Search");
-		btnClickSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				clickSearch();
-			}
-		});
-		panel.add(btnClickSearch);
-		
-		JLabel lblDate = new JLabel("Date:");
+		JLabel lblDate = new JLabel("Month:");
 		panel.add(lblDate);
 		
 		JComboBox comboMonth = new JComboBox(months);
@@ -119,6 +117,9 @@ public class MainWindow extends JFrame {
 				if (day == "") day = null;
 			}
 		});
+		
+		JLabel lblDay = new JLabel("Day:");
+		panel.add(lblDay);
 		panel.add(comboDay);
 		
 		JComboBox comboYear = new JComboBox(years);
@@ -129,9 +130,22 @@ public class MainWindow extends JFrame {
 				if (year == "") year = null;
 			}
 		});
+		
+		JLabel lblYear = new JLabel("Year:");
+		panel.add(lblYear);
 		panel.add(comboYear);
 		
+		JButton btnClickSearch = new JButton("Search");
+		btnClickSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clickSearch();
+			}
+		});
+		panel.add(btnClickSearch);
+		
 		panel_1 = new ListPanel(model);
+		panel_1.setBackground(Color.ORANGE);
+		panel_1.setForeground(Color.BLACK);
 		contentPane.add(panel_1, BorderLayout.CENTER);
 	}
 	
