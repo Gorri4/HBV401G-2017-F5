@@ -2,6 +2,7 @@ package control;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 import model.*;
@@ -26,7 +27,7 @@ public class SearchDbManager implements SearchDbManagerInterface {
 	    	  prepStmt = a.prepareStatement(sql);
 	    	  prepStmt.setString(1, borg);
 	      }
-	      else if (c == null) {
+	      else if (c.getName() == null) {
 	    	  String sql = "SELECT * FROM Flights "
 	    	  		+ "WHERE departureTime BETWEEN ? and ? ";
 	    	  prepStmt = a.prepareStatement(sql);
@@ -62,12 +63,13 @@ public class SearchDbManager implements SearchDbManagerInterface {
 			while (gogn.next()) {
 				City dCity = new City(gogn.getString(4), 0);
 				City aCity = new City(gogn.getString(5), 0);
-				Airplane plane = new Airplane(1, 1, gogn.getInt(8));
+				Airplane plane = new Airplane(50, 10, gogn.getInt(8));
 				Airline al = new Airline(gogn.getString(6), 0, true, true);
 				Double timi = 9.4;
 				int flugNr = gogn.getInt(1);
 				Date arrTime = new Date(gogn.getLong(2));
 				Date depTime = new Date(gogn.getLong(3));
+				System.out.println(arrTime.toString());
 				Double verd = gogn.getDouble(7);
 				Flight nyttFlug = new Flight(flugNr, arrTime, depTime, dCity, aCity, timi, verd, plane, al);
 				flightList.add(nyttFlug);

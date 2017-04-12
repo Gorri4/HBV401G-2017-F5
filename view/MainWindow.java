@@ -106,6 +106,7 @@ public class MainWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox kassi = (JComboBox)e.getSource();
 				month = (String) kassi.getSelectedItem();
+				if (month == "") month = null;
 			}
 		});
 		panel.add(comboMonth);
@@ -115,6 +116,7 @@ public class MainWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox kassi = (JComboBox)e.getSource();
 				day = (String) kassi.getSelectedItem();
+				if (day == "") day = null;
 			}
 		});
 		panel.add(comboDay);
@@ -124,6 +126,7 @@ public class MainWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox kassi = (JComboBox)e.getSource();
 				year = (String) kassi.getSelectedItem();
+				if (year == "") year = null;
 			}
 		});
 		panel.add(comboYear);
@@ -136,11 +139,12 @@ public class MainWindow extends JFrame {
 	
 	public void clickSearch(){
 		String s = textField.getText();
+		System.out.print(s);
 		System.out.println(s);
 		City c = new City(s,0);
 		
 		ArrayList<Flight> alist = null;
-		if( day == null|| month == null || year == null){
+		if( day == null || month == null || year == null){
 			alist = sc.search(0, null, c, null, 0);
 		}
 		else{
@@ -154,7 +158,6 @@ public class MainWindow extends JFrame {
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-			System.out.print(milliseconds);
 			alist = sc.search(0, milliseconds, c, null, 0);
 		}
 		//sc.sort("date");
