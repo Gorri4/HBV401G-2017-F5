@@ -84,7 +84,15 @@ public class BookingWindow extends JFrame {
 		gbc_lblSeatNumber.gridy = 1;
 		panel.add(lblSeatNumber, gbc_lblSeatNumber);
 		
-		JComboBox comboBox = new JComboBox();
+		
+		int seatquantity = f.getAirplane().getNumOfSeats();
+		System.out.println("bla"+ seatquantity);
+		Integer[] seatarray = new Integer[seatquantity];
+		for (int i=0; i<seatquantity; i++){
+			seatarray[0] = i;
+		}
+		
+		JComboBox<Integer> comboBox = new JComboBox<Integer>(seatarray);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.anchor = GridBagConstraints.WEST;
 		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
