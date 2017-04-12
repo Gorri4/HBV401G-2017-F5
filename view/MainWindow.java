@@ -16,7 +16,10 @@ import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -26,6 +29,9 @@ public class MainWindow extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private JComboBox comboDay;
+	private JComboBox comboMonth;
+	private JComboBox comboYear;
 	//private SearchDbManagerInterface Mock = new MockSearchDbManager();
 	//private SearchContainer sc = new SearchContainer(Mock);
 	private SearchDbManagerInterface RealDbManager = new SearchDbManager();
@@ -114,17 +120,36 @@ public class MainWindow extends JFrame {
 		String s = textField.getText();
 		System.out.println(s);
 		City c = new City(s,0);
-		ArrayList<Flight> alist = sc.search(0, null, c, null, 0);
+		Object day = comboDay.getSelectedItem();
+		Object month = comboMonth.getSelectedItem();
+		Object year = comboYear.getSelectedItem();
+		String dagur = day.toString();
+		String manudur = month.toString();
+		String ar = year.toString();
+		
+		String string_date = dagur + "-" + manudur + "-" + ar;
+
+		SimpleDateFormat f = new SimpleDateFormat("dd-MMM-yyyy");
+		long milliseconds = -1L;
+		try {
+		    Date d = f.parse(string_date);
+		    milliseconds = d.getTime();
+		} catch (ParseException e) {
+		    e.printStackTrace();
+		}
+		
+		ArrayList<Flight> alist = sc.search(0, milliseconds, c, null, 0);
+		
 		//sc.sort("date");
 		 //alist=sc.sort("lala");
 		/*String[] g = {"WOW", "Emirates"};
 		alist = sc.filter(g);*/
-		for(Flight f : alist)
+		for(Flight flug : alist)
 		{
-			System.out.print(f.getFlightNum());
-			System.out.print(f.getAirline().getName());
-			System.out.print(f.getDepCity().getName());
-			System.out.print(f.getArrCity().getName());
+			System.out.print(flug.getFlightNum());
+			System.out.print(flug.getAirline().getName());
+			System.out.print(flug.getDepCity().getName());
+			System.out.print(flug.getArrCity().getName());
 			System.out.println();
 		}
 		

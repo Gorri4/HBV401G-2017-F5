@@ -31,7 +31,7 @@ public class SearchDbManager implements SearchDbManagerInterface {
 	    	  		+ "WHERE departureTime BETWEEN ? and ? ";
 	    	  prepStmt = a.prepareStatement(sql);
 	    	  prepStmt.setLong(1, l);
-	    	  prepStmt.setLong(2, l + 86400);
+	    	  prepStmt.setLong(2, l + 86400000);
 	      }	
 	      else{
 	    	  String borg = c.getName();
@@ -41,7 +41,7 @@ public class SearchDbManager implements SearchDbManagerInterface {
 	    	  prepStmt = a.prepareStatement(sql);
 	    	  prepStmt.setString(1, borg);
 	    	  prepStmt.setLong(2, l);
-	    	  prepStmt.setLong(3, l + 86400);
+	    	  prepStmt.setLong(3, l + 86400000);
 	      }
 	     
 	      rs = prepStmt.executeQuery();
