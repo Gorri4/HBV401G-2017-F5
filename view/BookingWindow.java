@@ -14,6 +14,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 import model.*;
+import control.*;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -23,7 +24,7 @@ public class BookingWindow extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-
+	private Flight flight;
 	private String seatNum;
 	private JTextField textField_1;
 	/**
@@ -46,6 +47,7 @@ public class BookingWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public BookingWindow(Flight f) {
+		this.flight = f;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 545, 348);
 		contentPane = new JPanel();
@@ -164,7 +166,7 @@ public class BookingWindow extends JFrame {
 		String kt = textField_1.getText();
 		int kennitala ;
 		//name not empty
-		if(!name.equals("") /*&& !kt.equals("")*/){
+		/* if(!name.equals("") /*&& !kt.equals("")){
 			//check if ther is a number in kennitala field
 			try {
 			    kennitala = Integer.parseInt(textField_1.getText());
@@ -172,14 +174,19 @@ public class BookingWindow extends JFrame {
 			    KennitalaError ke = new KennitalaError();
 			    ke.setVisible(true);
 			}
-			//book flight here
+			
 		}
+		
 		else{
 			//name empty
 			NoNameWarning nnw = new NoNameWarning();
 			nnw.setVisible(true);
-		}
-		
+		}*/
+		Passenger p = new Passenger(name,kt);
+		Seat s = new Seat(seatNum,false,true);
+		BookingManager manager = new BookingManager();
+		int flightNum = flight.getFlightNum();
+		manager.book(s,p,flightNum);
 	}
 
 }

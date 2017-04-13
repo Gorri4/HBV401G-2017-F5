@@ -14,8 +14,7 @@ public class BookingManager {
 
 	public void book(Seat seat, Passenger passenger, int flightID){
 		Booking booking = new Booking(seat,passenger,flightID);
-		bookings.add(booking);
-		
+		//bookings.add(booking);
 		BookingDbManager manager = new BookingDbManager();
 		manager.insertToDb(booking);
 	}

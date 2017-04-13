@@ -3,8 +3,6 @@ package control;
 import model.*;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class BookingDbManager {
 	
@@ -23,19 +21,19 @@ public class BookingDbManager {
 	  	  String passenger = b.getPassenger().getName();
 	  	  String kennitala = b.getPassenger().getKennitala();
 	  	  int flightID = b.getFlightID();
-	      String sql = "INSERT INTO Bookings (FlightID, Passenger, Kennitala, Seat) VALUES ('?', '?', '?', '?')";
-	      
+	  	  System.out.println("lol3");
+	      String sql = "INSERT INTO Bookings (FlightID, Passenger, Kennitala, Seat) VALUES (?, ?, ?, ?)";
 	      prepStmt = a.prepareStatement(sql);
 	      prepStmt.setInt(1, flightID);
 	      prepStmt.setString(2, passenger);
 	      prepStmt.setString(3, kennitala);
 	      prepStmt.setString(4, seat);
-	      
 	      prepStmt.execute();
-	      a.close();
+	      //a.close();
 	      
 	    } catch ( Exception e ) {
 	      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+	      System.out.println("lol");
 	      System.exit(0);
 	    }
 	    System.out.println("Opened database successfully");
@@ -84,9 +82,7 @@ public class BookingDbManager {
 	
 	    
 	}
-	public static void main( String args[] ){
-		
-	}
+	
 
 }
 
