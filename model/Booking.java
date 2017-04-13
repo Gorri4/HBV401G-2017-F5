@@ -9,6 +9,7 @@ public class Booking implements Comparable<Booking>{
 	public Booking(Seat seat, Passenger passenger, int flightID){
 		this.passenger = passenger;
 		this.seat = seat;
+		this.flightID = flightID;
 	}
 	
 	public Passenger getPassenger(){
