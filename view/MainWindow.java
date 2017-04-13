@@ -36,6 +36,7 @@ import javax.swing.JSeparator;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JCheckBox;
 
 public class MainWindow extends JFrame {
 
@@ -217,24 +218,41 @@ public class MainWindow extends JFrame {
 				}
 				else{
 					String[] arr = {airline};
-					ArrayList<Flight> blist = sc.filter(arr,alist);
-					panel_1.updateList(blist);
+					alist = sc.filter(arr);
+					panel_1.updateList(alist);
 				}
 			}
 		});
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Meal Included");
+		
+		JCheckBox chckbxBagIncluded = new JCheckBox("Bag Included");
 		
 		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addContainerGap()
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-						.addComponent(comboFilter, Alignment.TRAILING, 0, 123, Short.MAX_VALUE)
-						.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnNewButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-						.addComponent(btnFilter))
+						.addGroup(gl_panel_2.createSequentialGroup()
+							.addContainerGap()
+							.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+								.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
+									.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+										.addComponent(chckbxBagIncluded)
+										.addComponent(chckbxNewCheckBox))
+									.addPreferredGap(ComponentPlacement.RELATED, 9, Short.MAX_VALUE))))
+						.addComponent(btnFilter)
+						.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(comboFilter, 0, 128, Short.MAX_VALUE))
+						.addGroup(gl_panel_2.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
+						.addGroup(gl_panel_2.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		gl_panel_2.setVerticalGroup(
@@ -245,12 +263,16 @@ public class MainWindow extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(comboFilter, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(chckbxNewCheckBox)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(chckbxBagIncluded)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnFilter)
-					.addGap(92)
+					.addGap(63)
 					.addComponent(btnNewButton)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGap(18)
 					.addComponent(btnNewButton_1)
-					.addContainerGap(192, Short.MAX_VALUE))
+					.addContainerGap(157, Short.MAX_VALUE))
 		);
 		panel_2.setLayout(gl_panel_2);
 	}
