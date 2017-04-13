@@ -121,6 +121,8 @@ public class BookingWindow extends JFrame {
 				}
 			}
 		}
+		
+		
 		else{
 			int seatquantity = f.getAirplane().getNumOfSeats();
 			seatarray = new String[seatquantity];
@@ -129,6 +131,7 @@ public class BookingWindow extends JFrame {
 			}
 		}
 		
+		seatNum = seatarray[0];
 		JComboBox comboBox = new JComboBox(seatarray);
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
