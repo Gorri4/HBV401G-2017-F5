@@ -107,13 +107,25 @@ public class BookingWindow extends JFrame {
 		
 		BookingManager manager = new BookingManager();
 		ArrayList<Integer> bokud = manager.getBookedSeats(f.getFlightNum());
-		int seatquantity = f.getAirplane().getNumOfSeats() - manager.getBookedSeats(f.getFlightNum()).size();
-		String[] seatarray = new String[seatquantity];
-		int j=1;
-		for (Integer i=1; i<=seatquantity; i++){
-			if (!bokud.contains(i)){
-				seatarray[j] = i+"";
-				j++;
+		int bokudsaeti = 0;
+		String[] seatarray = null;
+		if (!manager.getBookedSeats(f.getFlightNum()).isEmpty()){
+			bokudsaeti = manager.getBookedSeats(f.getFlightNum()).size();
+			int seatquantity = f.getAirplane().getNumOfSeats() - bokudsaeti;
+			seatarray = new String[seatquantity];
+			int j=1;
+			for (Integer i=1; i<=seatquantity; i++){
+				if (!bokud.contains(i)){
+					seatarray[j] = i+"";
+					j++;
+				}
+			}
+		}
+		else{
+			int seatquantity = f.getAirplane().getNumOfSeats();
+			seatarray = new String[seatquantity];
+			for (int i=0; i<=seatquantity-1; i++){
+					seatarray[i] = i+"";		
 			}
 		}
 		
