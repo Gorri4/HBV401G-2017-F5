@@ -17,13 +17,13 @@ public class SearchContainer {
 		this.SDBMinterface = SDBMinterface;
 	}
 	
-	public ArrayList<Flight> filter(String[] flugfelog){
+	public ArrayList<Flight> filter(String[] flugfelog, ArrayList<Flight> flug){
 		ArrayList<Flight> filteredFlightList = new ArrayList<Flight>();
 		if (flugfelog.length != 0){
 			for(String flugfelag : flugfelog){
-				for(Flight flug : flightList){
-					if (flug.getAirline().getName() == flugfelag){
-						filteredFlightList.add(flug);
+				for(Flight f : flug){
+					if (f.getAirline().getName().compareTo(flugfelag)==0){
+						filteredFlightList.add(f);
 					}
 				}
 			}

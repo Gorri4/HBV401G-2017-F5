@@ -33,14 +33,14 @@ public class BookingSuccess extends JDialog {
 	 * Create the dialog.
 	 */
 	public BookingSuccess() {
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 420, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
 		JLabel lblSuccessfulBooking = new JLabel("Successful Booking!");
-		lblSuccessfulBooking.setBounds(174, 105, 119, 16);
+		lblSuccessfulBooking.setBounds(174, 105, 154, 16);
 		contentPanel.add(lblSuccessfulBooking);
 		
 		JLabel label = new JLabel("");

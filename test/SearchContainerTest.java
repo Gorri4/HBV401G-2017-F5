@@ -105,7 +105,7 @@ public class SearchContainerTest {
 	public void FilterTest1Airline() {
 		ArrayList<Flight> fyrstiListi = container.getList();
 		String[] flugfelog = {"WOW","Emirates"};
-		ArrayList<Flight> filteredList = container.filter(flugfelog);
+		ArrayList<Flight> filteredList = container.filter(flugfelog, fyrstiListi);
 		String airline;
 		for (Flight flug : filteredList) {
 			airline = flug.getAirline().getName();
@@ -119,7 +119,7 @@ public class SearchContainerTest {
 	@Test
 	public void FilterTest2Airline() {
 		String[] flugfelog = {"EgErEkkiFlugfelag"};
-		ArrayList<Flight> filteredList = container.filter(flugfelog);
+		ArrayList<Flight> filteredList = container.filter(flugfelog,null);
 		assertTrue(filteredList.isEmpty());
 	}
 	
@@ -129,7 +129,7 @@ public class SearchContainerTest {
 	public void FilterTest3Airline() {
 		ArrayList<Flight> fyrstiListi = container.getList();
 		String[] flugfelog = {"WOW","EgErEkkiFlugfelag"};
-		ArrayList<Flight> filteredList = container.filter(flugfelog);
+		ArrayList<Flight> filteredList = container.filter(flugfelog, fyrstiListi);
 		String airline;
 		for (Flight flug : filteredList) {
 			airline = flug.getAirline().getName();
@@ -144,7 +144,7 @@ public class SearchContainerTest {
 	public void FilterTest4Airline() {
 		String[] flugfelog = {};
 		ArrayList<Flight> fyrstiListi = container.getList();
-		ArrayList<Flight> filteredList = container.filter(flugfelog);
+		ArrayList<Flight> filteredList = container.filter(flugfelog, fyrstiListi);
 		assertTrue(filteredList.size() == fyrstiListi.size());
 	}
 	

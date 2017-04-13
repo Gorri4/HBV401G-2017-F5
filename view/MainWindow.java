@@ -12,7 +12,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
-
 import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -21,6 +20,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -118,7 +119,7 @@ public class MainWindow extends JFrame {
 		panel.add(lblDate);
 		
 		JComboBox comboMonth = new JComboBox(months);
-		comboMonth.setBackground(new Color(245, 222, 179));
+		comboMonth.setBackground(new Color(255, 255, 255));
 		comboMonth.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox kassi = (JComboBox)e.getSource();
@@ -129,7 +130,7 @@ public class MainWindow extends JFrame {
 		panel.add(comboMonth);
 		
 		JComboBox comboDay = new JComboBox(days);
-		comboDay.setBackground(new Color(245, 222, 179));
+		comboDay.setBackground(new Color(255, 255, 255));
 		comboDay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox kassi = (JComboBox)e.getSource();
@@ -174,6 +175,8 @@ public class MainWindow extends JFrame {
 		contentPane.add(panel_1, BorderLayout.CENTER);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new LineBorder(new Color(255, 140, 0), 6));
+		panel_2.setBackground(new Color(255, 140, 0));
 		contentPane.add(panel_2, BorderLayout.EAST);
 		
 		JLabel lblNewLabel = new JLabel("Filter Airlines");
@@ -183,13 +186,10 @@ public class MainWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox kassi = (JComboBox)e.getSource();
 				airline = (String) kassi.getSelectedItem();
-				//airline = "Icelandair";
-				String[] arr = {airline};
-				//System.out.println(arr[0]);
-				/*ArrayList<Flight> blist = */sc.filter(arr);
-				panel_1.updateList(alist);
+				if (airline == "") airline = null;
 			}
 		});
+			
 		
 		JButton btnNewButton = new JButton("Sort by date");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -208,16 +208,33 @@ public class MainWindow extends JFrame {
 				sortingpricebool = !sortingpricebool;
 			}
 		});
+		
+		JButton btnFilter = new JButton("Filter");
+		btnFilter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(airline == null){
+					clickSearch();
+				}
+				else{
+					String[] arr = {airline};
+					ArrayList<Flight> blist = sc.filter(arr,alist);
+					panel_1.updateList(blist);
+				}
+			}
+		});
+		
+		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-						.addComponent(comboFilter, Alignment.TRAILING, 0, 103, Short.MAX_VALUE)
-						.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+						.addComponent(comboFilter, Alignment.TRAILING, 0, 123, Short.MAX_VALUE)
+						.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnNewButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+						.addComponent(btnFilter))
 					.addContainerGap())
 		);
 		gl_panel_2.setVerticalGroup(
@@ -227,11 +244,13 @@ public class MainWindow extends JFrame {
 					.addComponent(lblNewLabel)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(comboFilter, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(80)
-					.addComponent(btnNewButton)
 					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnFilter)
+					.addGap(92)
+					.addComponent(btnNewButton)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnNewButton_1)
-					.addContainerGap(210, Short.MAX_VALUE))
+					.addContainerGap(192, Short.MAX_VALUE))
 		);
 		panel_2.setLayout(gl_panel_2);
 	}
@@ -240,8 +259,6 @@ public class MainWindow extends JFrame {
 	
 	public void clickSearch(){
 		String s = textField.getText();
-		System.out.print(s);
-		System.out.println(s);
 		City c = new City(s,0);
 		
 		
@@ -281,17 +298,14 @@ public class MainWindow extends JFrame {
 		comboFilter.addItem("");
 		ArrayList<String> airl = new ArrayList<String>();
 		for(int i = 0; i<alist.size(); i++){
-			/*for(int j = 0; j<i; j++)
-			{
-				if(!alist.get(j).getAirline().getName().equals("Icelandair")){
-					airl.add(alist.get(i).getAirline().getName());
-				}
-			}*/
-			comboFilter.addItem(alist.get(i).getAirline().getName());
+			airl.add(alist.get(i).getAirline().getName());
 		}
-		/*for(String q : airl){
-			comboFilter.addItem(q);
-		}*/
-		
+		Set<String> hs = new HashSet<>();
+		hs.addAll(airl);
+		airl.clear();
+		airl.addAll(hs);
+		for (String nafn : airl){
+			comboFilter.addItem(nafn);
+		}		
 	}
 }
