@@ -183,31 +183,50 @@ public class BookingWindow extends JFrame {
 	
 	
 	private void saveBooking() {
+		boolean error = false;
+		
 		String name = textField.getText();
 		String kt = textField_1.getText();
 		int kennitala ;
 		//name not empty
-		/* if(!name.equals("") /*&& !kt.equals("")){
-			//check if ther is a number in kennitala field
+		if(name.equals("")){
+			//name empty
+			NoNameWarning nnw = new NoNameWarning();
+			nnw.setVisible(true);
+			error=true;	
+		}
+		
+		else if(!name.equals("")){
+			//check if there is a number in kennitala field
 			try {
 			    kennitala = Integer.parseInt(textField_1.getText());
 			} catch (NumberFormatException e) {
 			    KennitalaError ke = new KennitalaError();
 			    ke.setVisible(true);
+			    error=true;
 			}
 			
 		}
 		
-		else{
-			//name empty
-			NoNameWarning nnw = new NoNameWarning();
-			nnw.setVisible(true);
+		/*if(seatNum.equals("") && error == false){
+			SeatWarning sw = new SeatWarning();
+			sw.setVisible(true);
+			error=true;
 		}*/
-		Passenger p = new Passenger(name,kt);
-		Seat s = new Seat(seatNum,false,true);
-		BookingManager manager = new BookingManager();
-		int flightNum = flight.getFlightNum();
-		manager.book(s,p,flightNum);
+		
+		
+		if(error ==false){
+			Passenger p = new Passenger(name,kt);
+			Seat s = new Seat(seatNum,false,true);
+			BookingManager manager = new BookingManager();
+			int flightNum = flight.getFlightNum();
+			manager.book(s,p,flightNum);
+			
+			BookingSuccess bs = new BookingSuccess();
+			bs.setVisible(true);
+			this.setVisible(false);
+			dispose();
+		}
 	}
 
 }
