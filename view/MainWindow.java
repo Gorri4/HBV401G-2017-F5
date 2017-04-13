@@ -28,6 +28,13 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 import java.awt.Font;
+import java.awt.FlowLayout;
+import java.awt.Component;
+import javax.swing.SwingConstants;
+import javax.swing.JSeparator;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MainWindow extends JFrame {
 
@@ -36,6 +43,8 @@ public class MainWindow extends JFrame {
 	private String day;
 	private String month;
 	private String year;
+	private String airline;
+	JComboBox comboFilter = new JComboBox();
 	//private SearchDbManagerInterface Mock = new MockSearchDbManager();
 	//private SearchContainer sc = new SearchContainer(Mock);
 	private SearchDbManagerInterface RealDbManager = new SearchDbManager();
@@ -53,6 +62,10 @@ public class MainWindow extends JFrame {
 											"07", "08", "09", "10", "11", "12"};
 	private String[] years = new String[] {"", "2017", "2018", "2019"};
 
+	// List of flights to display
+	private ArrayList<Flight> alist = null;
+	private boolean sortingdatebool = true;
+	private boolean sortingpricebool = true;
 	/**
 	 * Launch the application.
 	 */
@@ -74,7 +87,7 @@ public class MainWindow extends JFrame {
 	 */
 	public MainWindow() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 748, 486);
+		setBounds(100, 100, 860, 537);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 140, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -159,6 +172,68 @@ public class MainWindow extends JFrame {
 		panel_1.setBackground(Color.WHITE);
 		panel_1.setForeground(Color.BLACK);
 		contentPane.add(panel_1, BorderLayout.CENTER);
+		
+		JPanel panel_2 = new JPanel();
+		contentPane.add(panel_2, BorderLayout.EAST);
+		
+		JLabel lblNewLabel = new JLabel("Filter Airlines");
+		
+		
+		comboFilter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JComboBox kassi = (JComboBox)e.getSource();
+				airline = (String) kassi.getSelectedItem();
+				//airline = "Icelandair";
+				String[] arr = {airline};
+				//System.out.println(arr[0]);
+				/*ArrayList<Flight> blist = */sc.filter(arr);
+				panel_1.updateList(alist);
+			}
+		});
+		
+		JButton btnNewButton = new JButton("Sort by date");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				sc.sort(alist, "date", sortingdatebool);
+				panel_1.updateList(alist);
+				sortingdatebool = !sortingdatebool;
+			}
+		});
+		
+		JButton btnNewButton_1 = new JButton("Sort by price");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				sc.sort(alist, "", sortingpricebool);
+				panel_1.updateList(alist);
+				sortingpricebool = !sortingpricebool;
+			}
+		});
+		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+						.addComponent(comboFilter, Alignment.TRAILING, 0, 103, Short.MAX_VALUE)
+						.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+					.addContainerGap())
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(comboFilter, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(80)
+					.addComponent(btnNewButton)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnNewButton_1)
+					.addContainerGap(210, Short.MAX_VALUE))
+		);
+		panel_2.setLayout(gl_panel_2);
 	}
 	
 	
@@ -169,7 +244,7 @@ public class MainWindow extends JFrame {
 		System.out.println(s);
 		City c = new City(s,0);
 		
-		ArrayList<Flight> alist = null;
+		
 		if( day == null || month == null || year == null){
 			alist = sc.search(0, null, c, null, 0);
 		}
@@ -200,6 +275,23 @@ public class MainWindow extends JFrame {
 		}
 		
 		panel_1.updateList(alist);
+		
+		// add into the combobox appropriate airlines
+		comboFilter.removeAllItems();
+		comboFilter.addItem("");
+		ArrayList<String> airl = new ArrayList<String>();
+		for(int i = 0; i<alist.size(); i++){
+			/*for(int j = 0; j<i; j++)
+			{
+				if(!alist.get(j).getAirline().getName().equals("Icelandair")){
+					airl.add(alist.get(i).getAirline().getName());
+				}
+			}*/
+			comboFilter.addItem(alist.get(i).getAirline().getName());
+		}
+		/*for(String q : airl){
+			comboFilter.addItem(q);
+		}*/
+		
 	}
-
 }
