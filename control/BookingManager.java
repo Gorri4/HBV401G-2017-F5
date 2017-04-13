@@ -14,7 +14,7 @@ public class BookingManager {
 
 	public void book(Seat seat, Passenger passenger, int flightID){
 		Booking booking = new Booking(seat,passenger,flightID);
-		//bookings.add(booking);
+		bookings.add(booking);
 		BookingDbManager manager = new BookingDbManager();
 		manager.insertToDb(booking);
 	}
@@ -24,6 +24,17 @@ public class BookingManager {
 		this.bookings = manager.createQuery(flightID);
 		Collections.sort(bookings);
 		return bookings;
+	}
+	
+	public ArrayList<Integer> getBookedSeats(int flightID){
+		BookingDbManager manager = new BookingDbManager();
+		ArrayList<Integer> listi = new ArrayList<Integer>();
+		ArrayList<Booking> bokanir= manager.createQuery(flightID);
+		for(Booking b : bokanir){
+			Integer numer = Integer.valueOf(b.getSeat().getSeatNumber());
+			listi.add(numer);
+		}
+		return listi;
 	}
 		
 }

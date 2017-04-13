@@ -1,8 +1,14 @@
 package control;
 
 import model.*;
+
+import java.awt.List;
 import java.sql.*;
 import java.util.ArrayList;
+
+import javax.sql.rowset.CachedRowSet;
+
+import com.sun.rowset.CachedRowSetImpl;
 
 public class BookingDbManager {
 	
@@ -11,25 +17,41 @@ public class BookingDbManager {
 		// TODO Auto-generated constructor stub
 	}
 	
+	private Connection getConnection(){
+		Connection a = null;
+		try{
+			Class.forName("org.sqlite.JDBC");
+			a = DriverManager.getConnection("jdbc:sqlite:database.db");
+			
+			}
+		catch ( Exception e ) {
+		      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+		      System.exit(0);
+		}
+		return a;
+	}
+	
+	
 	public void insertToDb(Booking b){
 		Connection a = null;
 	    try {
-	      Class.forName("org.sqlite.JDBC");
-	      a = DriverManager.getConnection("jdbc:sqlite:database.db");
+	      a = getConnection();
 	      PreparedStatement prepStmt = null;
+	      
 	      String seat = b.getSeat().getSeatNumber();
 	  	  String passenger = b.getPassenger().getName();
 	  	  String kennitala = b.getPassenger().getKennitala();
 	  	  int flightID = b.getFlightID();
-	  	  System.out.println("lol3");
+	  	  
 	      String sql = "INSERT INTO Bookings (FlightID, Passenger, Kennitala, Seat) VALUES (?, ?, ?, ?)";
 	      prepStmt = a.prepareStatement(sql);
 	      prepStmt.setInt(1, flightID);
 	      prepStmt.setString(2, passenger);
 	      prepStmt.setString(3, kennitala);
 	      prepStmt.setString(4, seat);
+	      
 	      prepStmt.execute();
-	      //a.close();
+	      a.close();
 	      
 	    } catch ( Exception e ) {
 	      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
@@ -37,15 +59,15 @@ public class BookingDbManager {
 	      System.exit(0);
 	    }
 	    System.out.println("Opened database successfully");
-	    
 	}
 	
-	public ResultSet execute(int flightID){
+	
+	public CachedRowSet execute(int flightID){
 		Connection a = null;
 		ResultSet rs = null;
+		CachedRowSet rowset = null;
 	    try {
-	      Class.forName("org.sqlite.JDBC");
-	      a = DriverManager.getConnection("jdbc:sqlite:database.db");
+	      a = getConnection();
 	      PreparedStatement prepStmt = null;
 	     
 	      String sql = "SELECT * FROM Bookings "
@@ -53,18 +75,22 @@ public class BookingDbManager {
 	      prepStmt = a.prepareStatement(sql);
 	      prepStmt.setInt(1, flightID);
 	      rs = prepStmt.executeQuery();
-
+	      rowset = new CachedRowSetImpl();
+	      rowset.populate(rs);
+	      a.close();
 	      
 	    } catch ( Exception e ) {
 	      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 	      System.exit(0);
 	    }
 	    System.out.println("Opened database successfully");
-	    return rs;
+	    
+	    return rowset;
+	    
 	}
 	
 	public ArrayList<Booking> createQuery(int flightID){
-		ResultSet gogn = execute(flightID);
+		CachedRowSet gogn = execute(flightID);
 		ArrayList<Booking> bookingList = new ArrayList<Booking>();
 		try{
 			while (gogn.next()) {
@@ -78,11 +104,8 @@ public class BookingDbManager {
 		catch(Exception e){
 		}
 
-		return bookingList;
-	
-	    
+		return bookingList;    
 	}
-	
 
 }
 
