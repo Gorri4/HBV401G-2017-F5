@@ -113,8 +113,8 @@ public class BookingWindow extends JFrame {
 			bokudsaeti = manager.getBookedSeats(f.getFlightNum()).size();
 			int seatquantity = f.getAirplane().getNumOfSeats() - bokudsaeti;
 			seatarray = new String[seatquantity];
-			int j=1;
-			for (Integer i=1; i<=seatquantity; i++){
+			int j=0;
+			for (Integer i=1; i<=seatquantity+1; i++){
 				if (!bokud.contains(i)){
 					seatarray[j] = i+"";
 					j++;
@@ -124,8 +124,8 @@ public class BookingWindow extends JFrame {
 		else{
 			int seatquantity = f.getAirplane().getNumOfSeats();
 			seatarray = new String[seatquantity];
-			for (int i=0; i<=seatquantity-1; i++){
-					seatarray[i] = i+"";		
+			for (int i=0; i<seatquantity; i++){
+					seatarray[i] = i+1+"";		
 			}
 		}
 		
