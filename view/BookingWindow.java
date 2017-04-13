@@ -18,6 +18,7 @@ import control.*;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class BookingWindow extends JFrame {
@@ -104,11 +105,16 @@ public class BookingWindow extends JFrame {
 		gbc_lblSeatNumber.gridy = 5;
 		panel.add(lblSeatNumber, gbc_lblSeatNumber);
 		
-		
-		int seatquantity = f.getAirplane().getNumOfSeats();
+		BookingManager manager = new BookingManager();
+		ArrayList<Integer> bokud = manager.getBookedSeats(f.getFlightNum());
+		int seatquantity = f.getAirplane().getNumOfSeats() - manager.getBookedSeats(f.getFlightNum()).size();
 		String[] seatarray = new String[seatquantity];
-		for (int i=0; i<seatquantity; i++){
-			seatarray[i] = i+"";
+		int j=1;
+		for (Integer i=1; i<=seatquantity; i++){
+			if (!bokud.contains(i)){
+				seatarray[j] = i+"";
+				j++;
+			}
 		}
 		
 		JComboBox comboBox = new JComboBox(seatarray);
