@@ -30,35 +30,62 @@ public class SearchDbManager implements SearchDbManagerInterface {
 		return a;
 	}
 	
-	private CachedRowSet execute(Long l, City c){
+	private CachedRowSet execute(Long l, City c, boolean toFrom){
 		Connection a = null;
 		ResultSet rs = null;
 		CachedRowSet rowset = null;
 	    try {
 	      a = getConnection();
 	      PreparedStatement prepStmt = null;
-	      if (l == null){
-	    	  String borg = c.getName();
-	    	  String sql = "SELECT * FROM Flights WHERE arrivalCity LIKE '%' || ? || '%'";	    	  
-	    	  prepStmt = a.prepareStatement(sql);
-	    	  prepStmt.setString(1, borg);
+	      if (toFrom){
+	      	if (l == null){
+	      		String borg = c.getName();
+	      		String sql = "SELECT * FROM Flights WHERE arrivalCity LIKE '%' || ? || '%' AND NOT (arrivalCity == 'Reykjavik')";	    	  
+	      		prepStmt = a.prepareStatement(sql);
+	      		prepStmt.setString(1, borg);
+	      	}
+	      	else if (c.getName() == null) {
+	      		String sql = "SELECT * FROM Flights "
+	      				+ "WHERE departureTime BETWEEN ? and ? AND NOT (arrivalCity == 'Reykjavik')";
+	      		prepStmt = a.prepareStatement(sql);
+	      		prepStmt.setLong(1, l);
+	      		prepStmt.setLong(2, l + 86400000);
+	      	}	
+	      	else{
+	      		String borg = c.getName();
+	      		String sql = "SELECT * FROM Flights "
+	      				+ "WHERE arrivalCity = ? "
+	      				+ "AND departureTime BETWEEN ? and ? AND NOT (arrivalCity == 'Reykjavik')";
+	      		prepStmt = a.prepareStatement(sql);
+	      		prepStmt.setString(1, borg);
+	      		prepStmt.setLong(2, l);
+	      		prepStmt.setLong(3, l + 86400000);
+	      	}
 	      }
-	      else if (c.getName() == null) {
-	    	  String sql = "SELECT * FROM Flights "
-	    	  		+ "WHERE departureTime BETWEEN ? and ? ";
-	    	  prepStmt = a.prepareStatement(sql);
-	    	  prepStmt.setLong(1, l);
-	    	  prepStmt.setLong(2, l + 86400000);
-	      }	
 	      else{
-	    	  String borg = c.getName();
-	    	  String sql = "SELECT * FROM Flights "
-	    	  		+ "WHERE arrivalCity = ? "
-	    	  		+ "AND departureTime BETWEEN ? and ? ";
-	    	  prepStmt = a.prepareStatement(sql);
-	    	  prepStmt.setString(1, borg);
-	    	  prepStmt.setLong(2, l);
-	    	  prepStmt.setLong(3, l + 86400000);
+		      	if (l == null){
+		      		String borg = c.getName();
+		      		String sql = "SELECT * FROM Flights WHERE departureCity LIKE '%' || ? || '%' AND NOT (departureCity == 'Reykjavik')";	    	  
+		      		prepStmt = a.prepareStatement(sql);
+		      		prepStmt.setString(1, borg);
+		      	}
+		      	else if (c.getName() == null) {
+		      		String sql = "SELECT * FROM Flights "
+		      				+ "WHERE departureTime BETWEEN ? and ? AND NOT (departureCity == 'Reykjavik')";
+		      		prepStmt = a.prepareStatement(sql);
+		      		prepStmt.setLong(1, l);
+		      		prepStmt.setLong(2, l + 86400000);
+		      	}	
+		      	else{
+		      		String borg = c.getName();
+		      		String sql = "SELECT * FROM Flights "
+		      				+ "WHERE departureCity = ? "
+		      				+ "AND departureTime BETWEEN ? and ? AND NOT (departureCity == 'Reykjavik')";
+		      		prepStmt = a.prepareStatement(sql);
+		      		prepStmt.setString(1, borg);
+		      		prepStmt.setLong(2, l);
+		      		prepStmt.setLong(3, l + 86400000);
+		      	}
 	      }
 	      rs = prepStmt.executeQuery();	  
 	      rowset = new CachedRowSetImpl();
@@ -123,8 +150,8 @@ public class SearchDbManager implements SearchDbManagerInterface {
 	    return rowset;
 	}
 	
-	public ArrayList<Flight> createQuery(Long l, City c){
-		CachedRowSet gogn = execute(l, c);
+	public ArrayList<Flight> createQuery(Long l, City c, boolean toFrom){
+		CachedRowSet gogn = execute(l, c, toFrom);
 		ArrayList<Flight> flightList = new ArrayList<Flight>();
 		try{
 			while (gogn.next()) {

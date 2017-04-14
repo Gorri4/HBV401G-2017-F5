@@ -39,6 +39,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JCheckBox;
+import javax.swing.JToggleButton;
+import javax.swing.Box;
 
 public class MainWindow extends JFrame {
 
@@ -48,6 +50,7 @@ public class MainWindow extends JFrame {
 	private String month;
 	private String year;
 	private String airline;
+	private boolean fromTo;
 	JComboBox comboFilter = new JComboBox();
 	//private SearchDbManagerInterface Mock = new MockSearchDbManager();
 	//private SearchContainer sc = new SearchContainer(Mock);
@@ -65,6 +68,7 @@ public class MainWindow extends JFrame {
 	private String[] months = new String[] {"", "01", "02", "03", "04", "05", "06", 
 											"07", "08", "09", "10", "11", "12"};
 	private String[] years = new String[] {"", "2017", "2018", "2019"};
+	private String[] toFrom = new String[] {"From", "To"};
 	
 	// List of flights to display
 	private ArrayList<Flight> alist = null;
@@ -96,7 +100,7 @@ public class MainWindow extends JFrame {
 	public MainWindow() {
 		setTitle("Flight search");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 860, 537);
+		setBounds(100, 100, 971, 537);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 140, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -115,6 +119,25 @@ public class MainWindow extends JFrame {
 				clickSearch();
 			}
 		});
+		
+		fromTo = true;
+		JComboBox comboToFrom = new JComboBox(toFrom);
+		comboToFrom.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JComboBox kassi = (JComboBox)e.getSource();
+				String texti = (String) kassi.getSelectedItem();
+				if (texti.equals("To")) fromTo = false;
+				else fromTo = true;
+			}
+		});		
+		panel.add(comboToFrom);
+		
+		JLabel lblReykjavk = new JLabel("Reykjavík.");
+		lblReykjavk.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
+		panel.add(lblReykjavk);
+		
+		Component horizontalStrut = Box.createHorizontalStrut(20);
+		panel.add(horizontalStrut);
 		
 		JLabel lblSearchCities = new JLabel("Search cities:");
 		lblSearchCities.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
@@ -333,7 +356,7 @@ public class MainWindow extends JFrame {
 		
 		
 		if( day == null || month == null || year == null){
-			alist = sc.search(0, null, c, null, 0);
+			alist = sc.search(0, null, c, null, 0, fromTo);
 		}
 		else{
 			String string_date = day + "-" + month + "-" + year;
@@ -346,7 +369,7 @@ public class MainWindow extends JFrame {
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-			alist = sc.search(0, milliseconds, c, null, 0);
+			alist = sc.search(0, milliseconds, c, null, 0, fromTo);
 		}
 	
 		panel_1.updateList(alist);

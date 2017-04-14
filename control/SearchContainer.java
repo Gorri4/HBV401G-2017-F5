@@ -51,8 +51,8 @@ public class SearchContainer {
 		}	
 	}
 	
-	public ArrayList<Flight> search(int flightNum, Long l, City arrCity, City depCity, double price){
-		ArrayList<Flight> newFlightList = SDBMinterface.createQuery(l, arrCity);
+	public ArrayList<Flight> search(int flightNum, Long l, City arrCity, City depCity, double price, boolean toFrom){
+		ArrayList<Flight> newFlightList = SDBMinterface.createQuery(l, arrCity, toFrom);
 		this.flightList = newFlightList;
 		return newFlightList;
 	}

@@ -27,7 +27,7 @@ public class SearchContainerTest {
 		this.borg1 = new City("Berlin", 0);
 		this.borg2 = new City("Paris", 0);
 		this.dags1 = 1497803417;
-		this.container.search(1,dags1,borg1,borg2,1);
+		this.container.search(1,dags1,borg1,borg2,1, true);
 	}
 	
 	@After
