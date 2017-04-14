@@ -44,7 +44,7 @@ public class KennitalaError extends JDialog {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(255, 140, 0));
-		contentPanel.setBorder(new LineBorder(new Color(255, 140, 0), 3));
+		contentPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
@@ -66,7 +66,7 @@ public class KennitalaError extends JDialog {
 		contentPanel.add(lblSomethingIsWrong);
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBorder(new LineBorder(new Color(255, 140, 0), 3));
+			buttonPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 			buttonPane.setBackground(new Color(255, 140, 0));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);

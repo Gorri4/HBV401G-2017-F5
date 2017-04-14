@@ -59,7 +59,7 @@ public class BookingWindow extends JFrame {
 		setBounds(100, 100, 545, 348);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 140, 0));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
@@ -80,7 +80,7 @@ public class BookingWindow extends JFrame {
 		gbc_lblName.fill = GridBagConstraints.VERTICAL;
 		gbc_lblName.insets = new Insets(0, 0, 5, 5);
 		gbc_lblName.gridx = 0;
-		gbc_lblName.gridy = 3;
+		gbc_lblName.gridy = 2;
 		panel.add(lblName, gbc_lblName);
 		
 		textField = new JTextField();
@@ -89,7 +89,7 @@ public class BookingWindow extends JFrame {
 		gbc_textField.insets = new Insets(0, 0, 5, 0);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 3;
+		gbc_textField.gridy = 2;
 		panel.add(textField, gbc_textField);
 		textField.setColumns(10);
 		
@@ -98,7 +98,7 @@ public class BookingWindow extends JFrame {
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 0;
-		gbc_lblNewLabel_1.gridy = 4;
+		gbc_lblNewLabel_1.gridy = 3;
 		panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		textField_1 = new JTextField();
@@ -107,7 +107,7 @@ public class BookingWindow extends JFrame {
 		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_1.gridx = 1;
-		gbc_textField_1.gridy = 4;
+		gbc_textField_1.gridy = 3;
 		panel.add(textField_1, gbc_textField_1);
 		textField_1.setColumns(10);
 		

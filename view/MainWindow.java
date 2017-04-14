@@ -103,12 +103,12 @@ public class MainWindow extends JFrame {
 		setBounds(100, 100, 1302, 598);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 140, 0));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(255, 140, 0), 5));
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.setBackground(new Color(255, 140, 0));
 		contentPane.add(panel, BorderLayout.NORTH);
 		
@@ -210,7 +210,7 @@ public class MainWindow extends JFrame {
 		contentPane.add(panel_1, BorderLayout.CENTER);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(new Color(255, 140, 0), 6));
+		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_2.setBackground(new Color(255, 140, 0));
 		contentPane.add(panel_2, BorderLayout.EAST);
 		
