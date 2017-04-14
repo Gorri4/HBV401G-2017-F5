@@ -19,6 +19,8 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -63,11 +65,15 @@ public class MainWindow extends JFrame {
 	private String[] months = new String[] {"", "01", "02", "03", "04", "05", "06", 
 											"07", "08", "09", "10", "11", "12"};
 	private String[] years = new String[] {"", "2017", "2018", "2019"};
-
+	
 	// List of flights to display
 	private ArrayList<Flight> alist = null;
 	private boolean sortingdatebool = true;
 	private boolean sortingpricebool = true;
+	private String[] includesBag;
+	private String[] includesMeal;
+	private boolean includeBag;
+	private boolean includeMeal;
 	/**
 	 * Launch the application.
 	 */
@@ -213,21 +219,62 @@ public class MainWindow extends JFrame {
 		JButton btnFilter = new JButton("Filter");
 		btnFilter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(airline == null){
+				if(airline == null && includeBag == false && includeMeal == false){
 					clickSearch();
 				}
 				else{
 					String[] arr = {airline};
-					alist = sc.filter(arr);
+					
+					
+					Set<String> s1 = new HashSet<String>();
+					Set<String> s2 = s1;
+					Set<String> s3 = s1;
+					if (includeBag == true && includeMeal == true){
+						s2 = new HashSet<String>(Arrays.asList(includesBag));
+						s3 = new HashSet<String>(Arrays.asList(includesMeal));
+						s2.retainAll(s3);
+					}
+					else if (includeBag == true && includeMeal == false){
+						s2 = new HashSet<String>(Arrays.asList(includesBag));
+					}
+					else if (includeBag == false && includeMeal == true){
+						s2 = new HashSet<String>(Arrays.asList(includesMeal));
+					}
+					
+					if (airline != null && !s2.isEmpty()){
+						s1 = new HashSet<String>(Arrays.asList(arr));
+						s2.retainAll(s1);
+					}
+					else if (airline != null && s2.isEmpty()){
+						s2 = new HashSet<String>(Arrays.asList(arr));
+					}
+					if (s2.isEmpty()){
+						String[] bull = {"egErEkkiFlugfelag"};
+						s2 = new HashSet<String>(Arrays.asList(bull));
+					}
+					
+					String[] result = s2.toArray(new String[s2.size()]);
+					alist = sc.filter(result);
 					panel_1.updateList(alist);
 				}
 			}
 		});
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Meal Included");
+		includeMeal = false;
+		JCheckBox chckbxMealIncluded = new JCheckBox("Meal Included");
+		chckbxMealIncluded.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				includeMeal = includeMeal == false;
+			}
+		});
 		
+		includeBag = false;
 		JCheckBox chckbxBagIncluded = new JCheckBox("Bag Included");
-		
+		chckbxBagIncluded.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				includeBag = includeBag == false;
+			}
+		});
 		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
@@ -241,7 +288,7 @@ public class MainWindow extends JFrame {
 								.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
 									.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 										.addComponent(chckbxBagIncluded)
-										.addComponent(chckbxNewCheckBox))
+										.addComponent(chckbxMealIncluded))
 									.addPreferredGap(ComponentPlacement.RELATED, 9, Short.MAX_VALUE))))
 						.addComponent(btnFilter)
 						.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
@@ -263,7 +310,7 @@ public class MainWindow extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(comboFilter, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(chckbxNewCheckBox)
+					.addComponent(chckbxMealIncluded)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(chckbxBagIncluded)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -300,19 +347,7 @@ public class MainWindow extends JFrame {
 			}
 			alist = sc.search(0, milliseconds, c, null, 0);
 		}
-		//sc.sort("date");
-		 //alist=sc.sort("lala");
-		/*String[] g = {"WOW", "Emirates"};
-		alist = sc.filter(g);*/
-		for(Flight flug : alist)
-		{
-			System.out.print(flug.getFlightNum());
-			System.out.print(flug.getAirline().getName());
-			System.out.print(flug.getDepCity().getName());
-			System.out.print(flug.getArrCity().getName());
-			System.out.println();
-		}
-		
+	
 		panel_1.updateList(alist);
 		
 		// add into the combobox appropriate airlines
@@ -328,6 +363,21 @@ public class MainWindow extends JFrame {
 		airl.addAll(hs);
 		for (String nafn : airl){
 			comboFilter.addItem(nafn);
-		}		
+		}	
+		
+		Set<String> bag = new HashSet<>();
+		Set<String> meal = new HashSet<>();
+		for(int i = 0; i<alist.size(); i++){
+			if(alist.get(i).getAirline().isBagIncluded()){
+				bag.add(alist.get(i).getAirline().getName());
+			}
+			if(alist.get(i).getAirline().isMealIncluded()){
+				meal.add(alist.get(i).getAirline().getName());
+			}
+		}
+		String[] includesBag = bag.toArray(new String[bag.size()]);
+		String[] includesMeal = meal.toArray(new String[meal.size()]);
+		this.includesBag = includesBag;
+		this.includesMeal = includesMeal;
 	}
 }
