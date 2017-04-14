@@ -37,6 +37,7 @@ public class KennitalaError extends JDialog {
 	 * Create the dialog.
 	 */
 	public KennitalaError() {
+		setTitle("Warning");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

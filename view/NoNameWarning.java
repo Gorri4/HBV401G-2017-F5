@@ -34,6 +34,7 @@ public class NoNameWarning extends JDialog {
 	 * Create the dialog.
 	 */
 	public NoNameWarning() {
+		setTitle("Warning");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

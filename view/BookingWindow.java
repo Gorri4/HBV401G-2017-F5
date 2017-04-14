@@ -48,6 +48,7 @@ public class BookingWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public BookingWindow(Flight f) {
+		setTitle("Booking");
 		this.flight = f;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 545, 348);
