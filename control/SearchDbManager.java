@@ -39,8 +39,7 @@ public class SearchDbManager implements SearchDbManagerInterface {
 	      PreparedStatement prepStmt = null;
 	      if (l == null){
 	    	  String borg = c.getName();
-	    	  String sql = "SELECT * FROM Flights "
-	    	  		+ "WHERE arrivalCity = ? ";
+	    	  String sql = "SELECT * FROM Flights WHERE arrivalCity LIKE '%' || ? || '%'";	    	  
 	    	  prepStmt = a.prepareStatement(sql);
 	    	  prepStmt.setString(1, borg);
 	      }
