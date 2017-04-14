@@ -28,6 +28,7 @@ public class BookingWindow extends JFrame {
 	private Flight flight;
 	private String seatNum;
 	private JTextField textField_1;
+	private int bokudsaeti;
 	/**
 	 * Launch the application.
 	 */
@@ -108,7 +109,7 @@ public class BookingWindow extends JFrame {
 		
 		BookingManager manager = new BookingManager();
 		ArrayList<Integer> bokud = manager.getBookedSeats(f.getFlightNum());
-		int bokudsaeti = 0;
+		bokudsaeti = 0;
 		String[] seatarray = null;
 		if (!manager.getBookedSeats(f.getFlightNum()).isEmpty()){
 			bokudsaeti = manager.getBookedSeats(f.getFlightNum()).size();
@@ -147,6 +148,14 @@ public class BookingWindow extends JFrame {
 		gbc_comboBox.gridy = 5;
 		panel.add(comboBox, gbc_comboBox);
 		
+		JLabel lblNewLabel_2 = new JLabel("Seats left in flight: " + (f.getAirplane().getNumOfSeats()-bokudsaeti)+"");
+		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+		gbc_lblNewLabel_2.anchor = GridBagConstraints.WEST;
+		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 0);
+		gbc_lblNewLabel_2.gridx = 1;
+		gbc_lblNewLabel_2.gridy = 6;
+		panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
+		
 		JPanel panel_2 = new JPanel();
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
 		gbc_panel_2.anchor = GridBagConstraints.SOUTH;
@@ -178,7 +187,7 @@ public class BookingWindow extends JFrame {
 		JLabel lblBookYourFlight = new JLabel("Book your flight:");
 		panel_1.add(lblBookYourFlight);
 	
-		JLabel lblNewLabel = new JLabel(f.getFlightNum() + "");
+		JLabel lblNewLabel = new JLabel("Flight: "+f.getFlightNum() + " " + " From "+ f.getDepCity().getName() + " to " + f.getArrCity().getName());
 		panel_1.add(lblNewLabel);
 	}
 	
@@ -209,11 +218,6 @@ public class BookingWindow extends JFrame {
 			
 		}
 		
-		/*if(seatNum.equals("") && error == false){
-			SeatWarning sw = new SeatWarning();
-			sw.setVisible(true);
-			error=true;
-		}*/
 		
 		
 		if(error ==false){
