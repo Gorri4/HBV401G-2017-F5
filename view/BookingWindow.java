@@ -21,6 +21,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class BookingWindow extends JFrame {
 
@@ -56,22 +58,26 @@ public class BookingWindow extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 545, 348);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 140, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(255, 140, 0), 3));
+		panel.setBackground(new Color(255, 140, 0));
 		contentPane.add(panel, BorderLayout.CENTER);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{175, 216, 0};
-		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel.rowHeights = new int[]{37, 20, 0, 25, 0, 0, 0, 0, 0, 0};
 		gbl_panel.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		JLabel lblName = new JLabel("Name:");
 		lblName.setFont(new Font("Verdana", Font.PLAIN, 13));
 		GridBagConstraints gbc_lblName = new GridBagConstraints();
+		gbc_lblName.fill = GridBagConstraints.VERTICAL;
 		gbc_lblName.insets = new Insets(0, 0, 5, 5);
 		gbc_lblName.gridx = 0;
 		gbc_lblName.gridy = 3;
@@ -166,6 +172,8 @@ public class BookingWindow extends JFrame {
 		panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new LineBorder(new Color(255, 140, 0), 3));
+		panel_2.setBackground(new Color(255, 140, 0));
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
 		gbc_panel_2.anchor = GridBagConstraints.SOUTH;
 		gbc_panel_2.fill = GridBagConstraints.HORIZONTAL;
@@ -193,6 +201,8 @@ public class BookingWindow extends JFrame {
 		panel_2.add(btnNewButton_1);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new LineBorder(new Color(255, 140, 0), 3));
+		panel_1.setBackground(new Color(255, 140, 0));
 		contentPane.add(panel_1, BorderLayout.NORTH);
 		
 		JLabel lblBookYourFlight = new JLabel("Book your flight:");

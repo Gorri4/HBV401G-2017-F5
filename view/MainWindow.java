@@ -100,7 +100,7 @@ public class MainWindow extends JFrame {
 	public MainWindow() {
 		setTitle("Flight search");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 971, 537);
+		setBounds(100, 100, 1302, 598);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 140, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

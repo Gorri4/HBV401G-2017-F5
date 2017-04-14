@@ -16,6 +16,8 @@ import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 public class KennitalaError extends JDialog {
 
@@ -41,7 +43,8 @@ public class KennitalaError extends JDialog {
 		setTitle("Warning");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPanel.setBackground(new Color(255, 140, 0));
+		contentPanel.setBorder(new LineBorder(new Color(255, 140, 0), 3));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
@@ -63,6 +66,8 @@ public class KennitalaError extends JDialog {
 		contentPanel.add(lblSomethingIsWrong);
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBorder(new LineBorder(new Color(255, 140, 0), 3));
+			buttonPane.setBackground(new Color(255, 140, 0));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{

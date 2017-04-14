@@ -33,7 +33,7 @@ public class ListPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		add(scrollPane);
 		list = new JList<Flight>(model);
-		list.setFont(new Font("Verdana", Font.PLAIN, 12));
+		list.setFont(new Font("Courier", Font.BOLD, 13));
 		scrollPane.setViewportView(list);
 		
 		

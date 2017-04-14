@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class NoNameWarning extends JDialog {
 
@@ -38,6 +40,7 @@ public class NoNameWarning extends JDialog {
 		setTitle("Warning");
 		setBounds(100, 100, 461, 300);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(255, 140, 0));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
@@ -56,6 +59,8 @@ public class NoNameWarning extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBorder(new LineBorder(new Color(255, 140, 0), 3));
+			buttonPane.setBackground(new Color(255, 140, 0));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
