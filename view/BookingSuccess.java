@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class BookingSuccess extends JDialog {
 
@@ -33,6 +34,7 @@ public class BookingSuccess extends JDialog {
 	 * Create the dialog.
 	 */
 	public BookingSuccess() {
+		setFont(new Font("Verdana", Font.PLAIN, 12));
 		setBounds(100, 100, 420, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -40,6 +42,7 @@ public class BookingSuccess extends JDialog {
 		contentPanel.setLayout(null);
 		
 		JLabel lblSuccessfulBooking = new JLabel("Successful Booking!");
+		lblSuccessfulBooking.setFont(new Font("Verdana", Font.PLAIN, 13));
 		lblSuccessfulBooking.setBounds(174, 105, 154, 16);
 		contentPanel.add(lblSuccessfulBooking);
 		
@@ -53,6 +56,7 @@ public class BookingSuccess extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.setFont(new Font("Verdana", Font.PLAIN, 13));
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						setVisible(false); 

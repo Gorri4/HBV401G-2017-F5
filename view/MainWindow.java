@@ -113,6 +113,7 @@ public class MainWindow extends JFrame {
 		contentPane.add(panel, BorderLayout.NORTH);
 		
 		textField = new JTextField();
+		textField.setFont(new Font("Verdana", Font.PLAIN, 13));
 		textField.setBackground(new Color(255, 255, 255));
 		textField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -122,6 +123,7 @@ public class MainWindow extends JFrame {
 		
 		fromTo = true;
 		JComboBox comboToFrom = new JComboBox(toFrom);
+		comboToFrom.setFont(new Font("Verdana", Font.PLAIN, 13));
 		comboToFrom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox kassi = (JComboBox)e.getSource();
@@ -133,23 +135,24 @@ public class MainWindow extends JFrame {
 		panel.add(comboToFrom);
 		
 		JLabel lblReykjavk = new JLabel("Reykjavík.");
-		lblReykjavk.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
+		lblReykjavk.setFont(new Font("Verdana", Font.PLAIN, 13));
 		panel.add(lblReykjavk);
 		
 		Component horizontalStrut = Box.createHorizontalStrut(20);
 		panel.add(horizontalStrut);
 		
 		JLabel lblSearchCities = new JLabel("Search cities:");
-		lblSearchCities.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
+		lblSearchCities.setFont(new Font("Verdana", Font.PLAIN, 13));
 		panel.add(lblSearchCities);
 		panel.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblDate = new JLabel("Month:");
-		lblDate.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
+		lblDate.setFont(new Font("Verdana", Font.PLAIN, 13));
 		panel.add(lblDate);
 		
 		JComboBox comboMonth = new JComboBox(months);
+		comboMonth.setFont(new Font("Verdana", Font.PLAIN, 13));
 		comboMonth.setBackground(new Color(255, 255, 255));
 		comboMonth.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -161,6 +164,7 @@ public class MainWindow extends JFrame {
 		panel.add(comboMonth);
 		
 		JComboBox comboDay = new JComboBox(days);
+		comboDay.setFont(new Font("Verdana", Font.PLAIN, 13));
 		comboDay.setBackground(new Color(255, 255, 255));
 		comboDay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -171,7 +175,7 @@ public class MainWindow extends JFrame {
 		});
 		
 		JLabel lblDay = new JLabel("Day:");
-		lblDay.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
+		lblDay.setFont(new Font("Verdana", Font.PLAIN, 13));
 		panel.add(lblDay);
 		panel.add(comboDay);
 		
@@ -185,12 +189,12 @@ public class MainWindow extends JFrame {
 		});
 		
 		JLabel lblYear = new JLabel("Year:");
-		lblYear.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
+		lblYear.setFont(new Font("Verdana", Font.PLAIN, 13));
 		panel.add(lblYear);
 		panel.add(comboYear);
 		
 		JButton btnClickSearch = new JButton("Search");
-		btnClickSearch.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
+		btnClickSearch.setFont(new Font("Verdana", Font.PLAIN, 13));
 		btnClickSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clickSearch();
@@ -211,6 +215,8 @@ public class MainWindow extends JFrame {
 		contentPane.add(panel_2, BorderLayout.EAST);
 		
 		JLabel lblNewLabel = new JLabel("Filter Airlines");
+		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 13));
+		comboFilter.setFont(new Font("Verdana", Font.PLAIN, 13));
 		
 		
 		comboFilter.addActionListener(new ActionListener() {
@@ -223,6 +229,7 @@ public class MainWindow extends JFrame {
 			
 		
 		JButton btnNewButton = new JButton("Sort by date");
+		btnNewButton.setFont(new Font("Verdana", Font.PLAIN, 13));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				sc.sort(alist, "date", sortingdatebool);
@@ -232,6 +239,7 @@ public class MainWindow extends JFrame {
 		});
 		
 		JButton btnNewButton_1 = new JButton("Sort by price");
+		btnNewButton_1.setFont(new Font("Verdana", Font.PLAIN, 13));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sc.sort(alist, "", sortingpricebool);
@@ -241,6 +249,7 @@ public class MainWindow extends JFrame {
 		});
 		
 		JButton btnFilter = new JButton("Filter");
+		btnFilter.setFont(new Font("Verdana", Font.PLAIN, 13));
 		btnFilter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(airline == null && includeBag == false && includeMeal == false){
@@ -286,6 +295,7 @@ public class MainWindow extends JFrame {
 		
 		includeMeal = false;
 		JCheckBox chckbxMealIncluded = new JCheckBox("Meal Included");
+		chckbxMealIncluded.setFont(new Font("Verdana", Font.PLAIN, 13));
 		chckbxMealIncluded.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				includeMeal = includeMeal == false;
@@ -294,6 +304,7 @@ public class MainWindow extends JFrame {
 		
 		includeBag = false;
 		JCheckBox chckbxBagIncluded = new JCheckBox("Bag Included");
+		chckbxBagIncluded.setFont(new Font("Verdana", Font.PLAIN, 13));
 		chckbxBagIncluded.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				includeBag = includeBag == false;

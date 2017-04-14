@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class BookingWindow extends JFrame {
 
@@ -49,6 +50,7 @@ public class BookingWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public BookingWindow(Flight f) {
+		setFont(new Font("Verdana", Font.PLAIN, 12));
 		setTitle("Booking");
 		this.flight = f;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -68,6 +70,7 @@ public class BookingWindow extends JFrame {
 		panel.setLayout(gbl_panel);
 		
 		JLabel lblName = new JLabel("Name:");
+		lblName.setFont(new Font("Verdana", Font.PLAIN, 13));
 		GridBagConstraints gbc_lblName = new GridBagConstraints();
 		gbc_lblName.insets = new Insets(0, 0, 5, 5);
 		gbc_lblName.gridx = 0;
@@ -75,6 +78,7 @@ public class BookingWindow extends JFrame {
 		panel.add(lblName, gbc_lblName);
 		
 		textField = new JTextField();
+		textField.setFont(new Font("Verdana", Font.PLAIN, 13));
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 0);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -84,6 +88,7 @@ public class BookingWindow extends JFrame {
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Kennitala:");
+		lblNewLabel_1.setFont(new Font("Verdana", Font.PLAIN, 13));
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 0;
@@ -91,6 +96,7 @@ public class BookingWindow extends JFrame {
 		panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Verdana", Font.PLAIN, 13));
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
@@ -100,6 +106,7 @@ public class BookingWindow extends JFrame {
 		textField_1.setColumns(10);
 		
 		JLabel lblSeatNumber = new JLabel("Select seatnumber to book:");
+		lblSeatNumber.setFont(new Font("Verdana", Font.PLAIN, 13));
 		GridBagConstraints gbc_lblSeatNumber = new GridBagConstraints();
 		gbc_lblSeatNumber.anchor = GridBagConstraints.EAST;
 		gbc_lblSeatNumber.insets = new Insets(0, 0, 5, 5);
@@ -135,6 +142,7 @@ public class BookingWindow extends JFrame {
 		
 		seatNum = seatarray[0];
 		JComboBox comboBox = new JComboBox(seatarray);
+		comboBox.setFont(new Font("Verdana", Font.PLAIN, 13));
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox kassi = (JComboBox)e.getSource();
@@ -149,6 +157,7 @@ public class BookingWindow extends JFrame {
 		panel.add(comboBox, gbc_comboBox);
 		
 		JLabel lblNewLabel_2 = new JLabel("Seats left in flight: " + (f.getAirplane().getNumOfSeats()-bokudsaeti)+"");
+		lblNewLabel_2.setFont(new Font("Verdana", Font.PLAIN, 13));
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 0);
@@ -165,6 +174,7 @@ public class BookingWindow extends JFrame {
 		panel.add(panel_2, gbc_panel_2);
 		
 		JButton btnNewButton = new JButton("Book flight!");
+		btnNewButton.setFont(new Font("Verdana", Font.PLAIN, 13));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				saveBooking();
@@ -173,6 +183,7 @@ public class BookingWindow extends JFrame {
 		panel_2.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Cancel");
+		btnNewButton_1.setFont(new Font("Verdana", Font.PLAIN, 13));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false); 
@@ -185,9 +196,11 @@ public class BookingWindow extends JFrame {
 		contentPane.add(panel_1, BorderLayout.NORTH);
 		
 		JLabel lblBookYourFlight = new JLabel("Book your flight:");
+		lblBookYourFlight.setFont(new Font("Verdana", Font.PLAIN, 13));
 		panel_1.add(lblBookYourFlight);
 	
 		JLabel lblNewLabel = new JLabel("Flight: "+f.getFlightNum() + " " + " From "+ f.getDepCity().getName() + " to " + f.getArrCity().getName());
+		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 13));
 		panel_1.add(lblNewLabel);
 	}
 	

@@ -15,6 +15,7 @@ import java.awt.GridLayout;
 import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class KennitalaError extends JDialog {
 
@@ -51,11 +52,13 @@ public class KennitalaError extends JDialog {
 		}
 		{
 			JLabel lblNewLabel = new JLabel("Booking unsuccessful.");
+			lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 13));
 			lblNewLabel.setBounds(136, 93, 235, 16);
 			contentPanel.add(lblNewLabel);
 		}
 		
 		JLabel lblSomethingIsWrong = new JLabel("Kennitala can only be a number");
+		lblSomethingIsWrong.setFont(new Font("Verdana", Font.PLAIN, 13));
 		lblSomethingIsWrong.setBounds(134, 110, 237, 16);
 		contentPanel.add(lblSomethingIsWrong);
 		{
@@ -64,6 +67,7 @@ public class KennitalaError extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.setFont(new Font("Verdana", Font.PLAIN, 13));
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						setVisible(false); 

@@ -12,6 +12,7 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class NoNameWarning extends JDialog {
 
@@ -35,14 +36,15 @@ public class NoNameWarning extends JDialog {
 	 */
 	public NoNameWarning() {
 		setTitle("Warning");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 461, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
 			JLabel lblNameMissingTry = new JLabel("Booking unsuccessful, name missing.");
-			lblNameMissingTry.setBounds(125, 100, 228, 16);
+			lblNameMissingTry.setFont(new Font("Verdana", Font.PLAIN, 13));
+			lblNameMissingTry.setBounds(125, 100, 292, 16);
 			lblNameMissingTry.setHorizontalAlignment(SwingConstants.CENTER);
 			contentPanel.add(lblNameMissingTry);
 		}
@@ -58,7 +60,7 @@ public class NoNameWarning extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
-				okButton.setHorizontalAlignment(SwingConstants.TRAILING);
+				okButton.setFont(new Font("Verdana", Font.PLAIN, 13));
 				okButton.setHorizontalTextPosition(SwingConstants.CENTER);
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
