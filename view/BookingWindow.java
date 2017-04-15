@@ -64,8 +64,7 @@ public class BookingWindow extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(255, 140, 0), 3));
-		panel.setBackground(new Color(255, 140, 0));
+		panel.setBackground(new Color(204, 204, 204));
 		contentPane.add(panel, BorderLayout.CENTER);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{175, 216, 0};
@@ -172,8 +171,8 @@ public class BookingWindow extends JFrame {
 		panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(new Color(255, 140, 0), 3));
-		panel_2.setBackground(new Color(255, 140, 0));
+		panel_2.setBorder(new LineBorder(new Color(204, 204, 204)));
+		panel_2.setBackground(new Color(204, 204, 204));
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
 		gbc_panel_2.anchor = GridBagConstraints.SOUTH;
 		gbc_panel_2.fill = GridBagConstraints.HORIZONTAL;
@@ -201,8 +200,7 @@ public class BookingWindow extends JFrame {
 		panel_2.add(btnNewButton_1);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new LineBorder(new Color(255, 140, 0), 3));
-		panel_1.setBackground(new Color(255, 140, 0));
+		panel_1.setBackground(new Color(204, 204, 204));
 		contentPane.add(panel_1, BorderLayout.NORTH);
 		
 		JLabel lblBookYourFlight = new JLabel("Book your flight:");

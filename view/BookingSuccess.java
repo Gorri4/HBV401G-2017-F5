@@ -39,8 +39,7 @@ public class BookingSuccess extends JDialog {
 		setFont(new Font("Verdana", Font.PLAIN, 12));
 		setBounds(100, 100, 420, 300);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBackground(new Color(255, 140, 0));
-		contentPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		contentPanel.setBackground(new Color(204, 204, 204));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
@@ -55,8 +54,7 @@ public class BookingSuccess extends JDialog {
 		contentPanel.add(label);
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBorder(new LineBorder(new Color(0, 0, 0)));
-			buttonPane.setBackground(new Color(255, 140, 0));
+			buttonPane.setBackground(new Color(204, 204, 204));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
