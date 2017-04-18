@@ -295,6 +295,7 @@ public class MainWindow extends JFrame {
 		
 		includeMeal = false;
 		JCheckBox chckbxMealIncluded = new JCheckBox("Meal Included");
+		chckbxMealIncluded.setBackground(new Color(255, 140, 0));
 		chckbxMealIncluded.setFont(new Font("Verdana", Font.PLAIN, 13));
 		chckbxMealIncluded.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -304,6 +305,7 @@ public class MainWindow extends JFrame {
 		
 		includeBag = false;
 		JCheckBox chckbxBagIncluded = new JCheckBox("Bag Included");
+		chckbxBagIncluded.setBackground(new Color(255, 140, 0));
 		chckbxBagIncluded.setFont(new Font("Verdana", Font.PLAIN, 13));
 		chckbxBagIncluded.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
