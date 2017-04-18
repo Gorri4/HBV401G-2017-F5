@@ -134,7 +134,7 @@ public class MainWindow extends JFrame {
 		});		
 		panel.add(comboToFrom);
 		
-		JLabel lblReykjavk = new JLabel("Reykjavík.");
+		JLabel lblReykjavk = new JLabel("Reykjavik.");
 		lblReykjavk.setFont(new Font("Verdana", Font.PLAIN, 13));
 		panel.add(lblReykjavk);
 		
