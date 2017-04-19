@@ -369,7 +369,7 @@ public class MainWindow extends JFrame {
 		
 		
 		if( day == null || month == null || year == null){
-			alist = sc.search(0, null, c, null, 0, fromTo);
+			alist = sc.search(null, c,fromTo);
 		}
 		else{
 			String string_date = day + "-" + month + "-" + year;
@@ -382,7 +382,7 @@ public class MainWindow extends JFrame {
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-			alist = sc.search(0, milliseconds, c, null, 0, fromTo);
+			alist = sc.search(milliseconds, c, fromTo);
 		}
 	
 		panel_1.updateList(alist);

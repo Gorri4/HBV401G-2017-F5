@@ -1,7 +1,6 @@
 package control;
 
-import java.sql.Date;
-import java.sql.ResultSet;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -51,8 +50,8 @@ public class SearchContainer {
 		}	
 	}
 	
-	public ArrayList<Flight> search(int flightNum, Long l, City arrCity, City depCity, double price, boolean toFrom){
-		ArrayList<Flight> newFlightList = SDBMinterface.createQuery(l, arrCity, toFrom);
+	public ArrayList<Flight> search(Long l, City city, boolean toFrom){
+		ArrayList<Flight> newFlightList = SDBMinterface.createQuery(l, city, toFrom);
 		this.flightList = newFlightList;
 		return newFlightList;
 	}

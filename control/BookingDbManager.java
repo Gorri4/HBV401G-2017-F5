@@ -21,7 +21,7 @@ public class BookingDbManager {
 		Connection a = null;
 		try{
 			Class.forName("org.sqlite.JDBC");
-			a = DriverManager.getConnection("jdbc:sqlite:database.db");
+			a = DriverManager.getConnection("jdbc:sqlite::resource:database.db");
 			
 			}
 		catch ( Exception e ) {
