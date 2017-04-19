@@ -44,17 +44,11 @@ public class SearchDbManager implements SearchDbManagerInterface {
 	      		prepStmt = a.prepareStatement(sql);
 	      		prepStmt.setString(1, borg);
 	      	}
-	      	else if (c.getName() == null) {
-	      		String sql = "SELECT * FROM Flights "
-	      				+ "WHERE departureTime BETWEEN ? and ? AND NOT (arrivalCity == 'Reykjavik')";
-	      		prepStmt = a.prepareStatement(sql);
-	      		prepStmt.setLong(1, l);
-	      		prepStmt.setLong(2, l + 86400000);
-	      	}	
+
 	      	else{
 	      		String borg = c.getName();
 	      		String sql = "SELECT * FROM Flights "
-	      				+ "WHERE arrivalCity = ? "
+	      				+ "WHERE arrivalCity LIKE '%' || ? || '%'"
 	      				+ "AND departureTime BETWEEN ? and ? AND NOT (arrivalCity == 'Reykjavik')";
 	      		prepStmt = a.prepareStatement(sql);
 	      		prepStmt.setString(1, borg);
@@ -69,17 +63,11 @@ public class SearchDbManager implements SearchDbManagerInterface {
 		      		prepStmt = a.prepareStatement(sql);
 		      		prepStmt.setString(1, borg);
 		      	}
-		      	else if (c.getName() == null) {
-		      		String sql = "SELECT * FROM Flights "
-		      				+ "WHERE departureTime BETWEEN ? and ? AND NOT (departureCity == 'Reykjavik')";
-		      		prepStmt = a.prepareStatement(sql);
-		      		prepStmt.setLong(1, l);
-		      		prepStmt.setLong(2, l + 86400000);
-		      	}	
+
 		      	else{
 		      		String borg = c.getName();
 		      		String sql = "SELECT * FROM Flights "
-		      				+ "WHERE departureCity = ? "
+		      				+ "WHERE departureCity LIKE '%' || ? || '%'"
 		      				+ "AND departureTime BETWEEN ? and ? AND NOT (departureCity == 'Reykjavik')";
 		      		prepStmt = a.prepareStatement(sql);
 		      		prepStmt.setString(1, borg);
